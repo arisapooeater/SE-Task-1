@@ -42,9 +42,34 @@ System messages and menus should be enclosed in a box with visual structure, whe
 
 ## Design
 ### Structure Chart
+![Structure Chart](./images/structurechart.jpeg)
+
+---
 ### Flowchart
+#### main()
+#### sort_characters()
+#### view_list()
+#### add_character()
+#### remove_character()
+---
 ### Pseudocode
+#### main()
+```aaaaa```
+#### sort_characters()
+```aaaa```
+#### view_list()
+```aaa```
+#### add_character()
+```aaa```
+#### remove_character()
+```aaa```
+
+---
 ### Data Dictionary
+| Variable | Data Type | Format for Display | Size in Bytes | Size for Display | Description | Example | Validation |
+|-|-|-|-|-|-|-|-|
+
+---
 ### Gantt Chart
 ![Gantt Chart](./images/Ganttchart.png)
 ## Development
