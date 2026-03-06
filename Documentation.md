@@ -5,44 +5,17 @@ Arisa Komatsu
 To enable users to search for and sort characters in the animated series 'My Little Pony' by either gender or kind, providing general information on character traits like their alias, residence, occupation etc. This application aims to make MLP lore and information more readily available for the fandom without the need of constant web surfing.
 
 ### Functional Requirements
-- **Data handling:** System should be able to pull data from API and return it based on user commands.
+- **User Interface:** Should provide users with a list of action options with a textfield for users to enter their choice/input. 
+- **Data Retrieval/Display:** System should be able to pull data from API and return it based on user commands. Users should be able to access character names, gender, residence, occupation and a profile image of all characters in My Little Pony.
 - **User interaction:** System should allow users to search for characters by name, type or gender and create a personal collection of favourite characters.
 - **Error processing:** System should be able to identify invalid inputs and respond with accurate and specific error messages.
 
 ### Non-Functional Requirements
-- **Performance:**
+- **Performance:** System should respond to user input quickly within 3 seconds and shouldn't bug out from invalid inputs or errors.
 - **Usability:** System should be structured and clearly accessible for all users. The README file should also provide extensive assistance on using and navigating the project.
 - **Reliability:** The API chosen for this project should contain accurate, reliable data on the My Little Pony Universe. Additionally, the system should be able to relay this data without faults. 
-- **Security:** API key should be hidden to prevent data theft and unauthorised access.
-
-Non-functional requirements define the quality attributes or constraints of the system. These requirements address aspects such as performance, usability, reliability, and security, which affect how the system performs its functions. These will be defined in more detail in the Determining Specifications Phase.
-
-Example
-The book reservation process should complete within 2 seconds of the user submitting a reservation request.
-
-The system must be available 99.9% of the time, ensuring high reliability and uptime.
-
-User data and reservation details must be encrypted to ensure security and privacy.
-
-The feature should be accessible and usable on both desktop and mobile devices, adhering to responsive design principles.\
-
-### Constraints
-- 
-Constraints are the limitations or restrictions that must be considered during the development of the feature. These could be technical, legal, regulatory, or organisational constraints.
-
-Example
-The feature must integrate with the existing library management system without requiring significant changes to the database schema.
-
-The solution must comply with data protection regulations (e.g., GDPR, CCPA) concerning user data storage and handling.
-
-The feature should be implemented using the existing technology stack (e.g., Django for the backend, React for the frontend).
-
-The project budget is limited, so the solution should be cost-effective without requiring additional third-party licenses or services.
-
-### Acceptance Criteria
-- Users can successfully search for a character and receive accurate information within 2 seconds.
-- Users can successfully choose to sort all characters into different categories (eg. sex, type) and receive accurate information within 2 seconds.
-- The system prevents users from adding characters that are already inside the user's collection.
+- **Security:** API key should be hidden to prevent data theft and unauthorised access. Should practise data minimisation.
+- **Accessibility:** System should be easily navigated and usable for a range of abilities. README file should be able to explain how to use the system clearly and concisely.
 
 ## Determining Specification
 ### Functional Specifications
@@ -73,6 +46,7 @@ System messages and menus should be enclosed in a box with visual structure, whe
 ### Pseudocode
 ### Data Dictionary
 ### Gantt Chart
+![Gantt Chart](./images/Ganttchart.png)
 ## Development
 ## Integration
 ## Testing and Debugging
