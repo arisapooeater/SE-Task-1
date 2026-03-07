@@ -3,8 +3,7 @@
 
 Description (2-3 sentences)(what project does, why it exists, and the problems it solves)
 
-This user interface is based on the animated series 'My Little Pony: Friendship is Magic' and its soul purpose is to allow people within the fandom and those wanting to get to know the series to familiarise themselves with characters from MLP. It acts as an interactive encyclopedia of all featured characters, where users can (), ultimately (what problem solve?)
-
+This user interface is based on the animated series 'My Little Pony: Friendship is Magic' and its soul purpose is to allow people within the fandom and those wanting to get to know the series to familiarise themselves with characters from MLP. It acts as an interactive encyclopedia of all featured characters, where users can readily access MLP information without the need of constant web surfing.
 ## Requirements
 To run this program, you need the following dependencies:
 - 'requests' to make HTTP requests to the () API.
