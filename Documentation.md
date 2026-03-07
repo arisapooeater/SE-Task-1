@@ -54,15 +54,114 @@ System messages and menus should be enclosed in a box with visual structure, whe
 ---
 ### Pseudocode
 #### main()
-```aaaaa```
+```
+BEGIN main()
+    favlist = {}
+    exit = False
+    WHILE exit is not True
+        DISPLAY '[MLP Character Guide!] 1.Search character 2.Sort characters 3.View favourites list 4.Exit'
+        INPUT choice
+        IF choice is 1 THEN
+            DISPLAY 'What character would you like to search?: '
+            INPUT name
+            search_character(name)
+        ELIF choice is 2 THEN
+            sort_characters()
+        ELIF choice is 3 THEN
+            view_list()
+        ELIF choice is 4 THEN
+            DISPLAY 'Exiting program...'
+            exit = True
+        ELSE
+            DISPLAY 'Invalid input. Reloading Main Menu...'
+        ENDIF
+
+END main()
+```
+#### search_character()
+```
+BEGIN search_character(name)
+    IF name is in API THEN
+    ELSE
+    ENDIF
+END search_character(name)
+```
 #### sort_characters()
-```aaaa```
+```
+BEGIN sort_characters()
+    DISPLAY 'What would you like to sort characters by? 1.Sex 2.Type'
+    INPUT sort
+    IF sort is 1 THEN
+        DISPLAY 'Sort by: 1. Female 2. Male'
+        INPUT sex
+        IF sex is 1 THEN
+        ELIF sex is 2 THEN
+        ELSE
+            "Invalid input. Choose either option 1 or 2. Returning to main menu...'
+        ENDIF
+    ELIF sort is 2 THEN
+        DISPLAY 'Sort by: 1. Pegasus 2. Earth Pony 3. Unicorn 4. Other creatures'
+        INPUT type
+        IF type is 1 or 2 or 3 or 4 THEN
+        ELSE
+            DISPLAY 'Invalid input. Choose option between 1-4 (1/2/3/4). Returning to main menu...'
+    ELSE
+        DISPLAY 'Invalid input. Choose option 1 or 2. Returning to main menu...'
+    ENDIF
+END sort_characters()
+```
 #### view_list()
-```aaa```
+```
+BEGIN view_list()
+    exit = False
+    WHILE exit is False
+        DISPLAY favlist()
+        DISPLAY '1. Add character 2. Remove Character 3. Exit favourites list'
+        INPUT choice
+        IF choice is 1 THEN
+            add_character()
+        ELIF choice is 2 THEN
+            remove_character()
+        ELIF choice is 3 THEN
+            DISPLAY 'Exiting favourites list...'
+            exit = True
+        ELSE 
+            DISPLAY 'Invalid input. Choose a number between 1-3 (1/2/3). Reloading favourites list...
+        ENDIF
+
+
+END view_list()
+```
 #### add_character()
-```aaa```
+```
+BEGIN add_character()
+    DISPLAY 'What character would you like to add to favourites? : '
+    INPUT character
+    IF character is in favlist() THEN
+        DISPLAY 'Character already in favourites.'
+    ELIF character is in API THEN
+        ADD character to favlist()
+        DISPLAY 'Character successfully added!'
+    ELSE
+        DISPLAY 'Invalid input. Character does not exist.'
+    ENDIF
+
+
+END add_character()
+```
 #### remove_character()
-```aaa```
+```
+BEGIN remove_character()
+    DISPLAY 'What character would you like to remove from favourites? : '
+    INPUT character
+    IF character is in favlist() THEN
+        DELETE character from favlist()
+        DISPLAY 'Character successfully removed!'
+    ELSE
+        DISPLAY 'Invalid input. Character not found in list.'
+    ENDIF
+END remove_character()
+```
 
 ---
 ### Data Dictionary
