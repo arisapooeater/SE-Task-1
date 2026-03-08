@@ -19,7 +19,40 @@ To enable users to search for and sort characters in the animated series 'My Lit
 
 ## Determining Specification
 ### Functional Specifications
+**User Requirements:**
+
+What does the user need to be able to do? List all specifications here.
+
+**Inputs & Outputs:**
+
+What inputs will the system need to accept and what outputs will it need to display?
+
+**Core Features:**
+
+At its core, what specifically does the program need to be able to do?
+
+**User Interaction:**
+
+How will users interact with the system (e.g. command-line, GUI?) and what information will it need to provide to help users navigate?
+
+**Error Handling:**
+
+What possible errors could you face that need to be handled by the system?
+
 ### Non-Functional Specifications
+
+Performance
+
+How quickly should we try to get the system to perform tasks, what efficiency is required to maintain user engagement? How can we ensure our program remains efficient?
+
+Useability / Accessibility
+
+How might you make your application more accessible? What could you do with the User Interface to improve usability?
+
+Reliability
+
+What could perhaps not crash the whole system, but could be an issue and needs to be addressed? Data integrity? Duplicate data? API retrieval crash?
+
 **Wording of messages:** 
 
 Overall tone of system messages and menu should be very friendly and catering to the user and must maintain a warm character while giving clear and readable responses. 
