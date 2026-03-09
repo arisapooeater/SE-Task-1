@@ -24,8 +24,8 @@ def search_character(name):
         print("Character not found.")
         return
 
-def sort_characters():
-    """Add a country to My Country List."""
+def sort_characters(sort):
+    """Display Favourites List and ask users if they want to add or remove characters."""
     character = search_character(name)
     if character:
         favlist[character["name"]] = character

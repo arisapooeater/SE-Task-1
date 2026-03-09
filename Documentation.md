@@ -73,6 +73,7 @@ System messages and menus should be enclosed in a box with visual structure, whe
 
  After the system completes a user action, it should ask the user if they are done to clear the screen and reload the main menu for further actions and prevent a cluttered and confusing interface.
 
+### Use Cases
 ## Design
 ### Structure Chart
 ![Structure Chart](./images/structurechart.jpeg)
@@ -90,9 +91,8 @@ System messages and menus should be enclosed in a box with visual structure, whe
 ```
 BEGIN main()
     favlist = {}
-    exit = False
-    WHILE exit is not True
-        DISPLAY '[MLP Character Guide!] 1.Search character 2.Sort characters 3.View favourites list 4.Exit'
+    WHILE True
+        DISPLAY "[MLP Character Guide!] 1.Search character 2.Sort characters 3.View favourites list 4.Exit"
         INPUT choice
         IF choice is 1 THEN
             DISPLAY 'What character would you like to search?: '
@@ -135,9 +135,17 @@ BEGIN sort_characters()
     ELIF sort is 2 THEN
         DISPLAY 'Sort by: 1. Pegasus 2. Earth Pony 3. Unicorn 4. Other creatures'
         INPUT type
-        IF type is 1 or 2 or 3 or 4 THEN
+        IF type is 1 THEN
+            
+        ELIF type is 2 THEN
+
+        ELIF type is 3 THEN
+
+        ELIF type is 4 THEN
+
         ELSE
             DISPLAY 'Invalid input. Choose option between 1-4 (1/2/3/4). Returning to main menu...'
+        ENDIF
     ELSE
         DISPLAY 'Invalid input. Choose option 1 or 2. Returning to main menu...'
     ENDIF

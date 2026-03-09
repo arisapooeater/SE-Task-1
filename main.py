@@ -11,7 +11,11 @@ def main():
             #search_character()
             pass
         elif choice == '2':
-            #sort_characters()
+            choice = input("Sort by: 1.Gender 2.Type")
+            if choice == '1':
+                pass
+
+            sort_characters()
             pass
         elif choice == '3':
             #view_list()
