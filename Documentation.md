@@ -79,14 +79,7 @@ System messages and menus should be enclosed in a box with visual structure, whe
 ![Structure Chart](./images/structurechart.jpeg)
 
 ---
-### Flowchart
-#### main()
-#### sort_characters()
-#### view_list()
-#### add_character()
-#### remove_character()
----
-### Pseudocode
+### Flowchart & Pseudocode
 #### main()
 ```
 BEGIN main()
@@ -104,21 +97,26 @@ BEGIN main()
             view_list()
         ELIF choice is 4 THEN
             DISPLAY 'Exiting program...'
-            exit = True
+            break
         ELSE
             DISPLAY 'Invalid input. Reloading Main Menu...'
         ENDIF
 
 END main()
 ```
+![Main Loop Flowchart](./images/mainflowchart.png)
 #### search_character()
 ```
 BEGIN search_character(name)
     IF name is in API THEN
+        DISPLAY name, sex, kind, residence, occupation, image
     ELSE
+        DISPLAY "Invalid input. Character does not exist."
     ENDIF
 END search_character(name)
 ```
+![Search character Flowchart](./images/searchcharacterflowchart.png)
+
 #### sort_characters()
 ```
 BEGIN sort_characters()
@@ -128,21 +126,23 @@ BEGIN sort_characters()
         DISPLAY 'Sort by: 1. Female 2. Male'
         INPUT sex
         IF sex is 1 THEN
+            GET characters with sex = 'female' from API
         ELIF sex is 2 THEN
+            GET characters with sex = 'male' from API
         ELSE
-            "Invalid input. Choose either option 1 or 2. Returning to main menu...'
+            DISPLAY "Invalid input. Choose either option 1 or 2. Returning to main menu...'
         ENDIF
     ELIF sort is 2 THEN
         DISPLAY 'Sort by: 1. Pegasus 2. Earth Pony 3. Unicorn 4. Other creatures'
         INPUT type
         IF type is 1 THEN
-            
+            GET characters with type = 'pegasus' from API
         ELIF type is 2 THEN
-
+            GET characters with type = 'earth pony' from API
         ELIF type is 3 THEN
-
+            GET characters with type = 'unicorn' from API
         ELIF type is 4 THEN
-
+            GET characters where type is NOT pegasus, earth pony or unicorn from API
         ELSE
             DISPLAY 'Invalid input. Choose option between 1-4 (1/2/3/4). Returning to main menu...'
         ENDIF
@@ -151,6 +151,8 @@ BEGIN sort_characters()
     ENDIF
 END sort_characters()
 ```
+![Sort Characters Flowchart](./images/sortcharactersflowchart.png)
+
 #### view_list()
 ```
 BEGIN view_list()
@@ -173,6 +175,8 @@ BEGIN view_list()
 
 END view_list()
 ```
+![View List Flowchart](./images/viewlistflowchart.png)
+
 #### add_character()
 ```
 BEGIN add_character()
@@ -190,6 +194,8 @@ BEGIN add_character()
 
 END add_character()
 ```
+![Add character Flowchart](./images/addcharacterflowchart.png)
+
 #### remove_character()
 ```
 BEGIN remove_character()
@@ -203,6 +209,7 @@ BEGIN remove_character()
     ENDIF
 END remove_character()
 ```
+![Remove character Flowchart](./images/removecharacterflowchart.png)
 
 ---
 ### Data Dictionary
