@@ -21,57 +21,53 @@ To enable users to search for and sort characters in the animated series 'My Lit
 ### Functional Specifications
 **User Requirements:**
 
-What does the user need to be able to do? List all specifications here.
+The user needs to be able to select what information the system retrieves from the API and displays, whether it be a specific character or characters that align with a classification. There should be an input are where the user can type an input into the system to select an action based on the options displayed to the user.
+
 
 **Inputs & Outputs:**
 
-What inputs will the system need to accept and what outputs will it need to display?
+The system should accept user inputs in the form of strings and provide outputs such as data retrieved from the API, system error messages and status codes.
 
 **Core Features:**
 
-At its core, what specifically does the program need to be able to do?
+- The system should allow users to search characters from My Little Pony by entering a character name and should retrieve the character data (eg. name, residence, occupation) from the external API, then process and display it in the form of a string to the user.
+- The system should allow users to filter characters based on specific attributes (eg. sex, type)
+- User should be able to add and remove characters from a dictionary that can be displayed to the user in the form of a string.
+
+
 
 **User Interaction:**
 
-How will users interact with the system (e.g. command-line, GUI?) and what information will it need to provide to help users navigate?
+Users will be provided with a command-line where they can type their course of action in text depending on the options they were given. Before each command line, the system will need to display to users what actions they can take, what to type to select each option and where users can type their input to ensure clear and easy navigation.
 
 **Error Handling:**
 
-What possible errors could you face that need to be handled by the system?
+System should minimise errors through proper validation and be able to handle invalid inputs without system failures or data loss, responding to users with clear, descriptive and user-friendly error messages that do not expose sensitive system information.
+
 
 ### Non-Functional Specifications
 
-Performance
+**Performance**
 
-How quickly should we try to get the system to perform tasks, what efficiency is required to maintain user engagement? How can we ensure our program remains efficient?
+All system actions (eg. loading main menu, printing search results etc.) should occur within 2-3 seconds and navigating the project should feel natural and streamlined to users. We can ensure the program remains efficient by minimising unneccessary processing and ensuring that only the required data is retrieved from the API. The software should also minimise redudant and repetitive lines of code for most optimal maintainability, overall guaranteeing that users can experience a smooth, consistent and efficient interaction with the program even when multiple requests are made.
 
-Useability / Accessibility
+**Usability / Accessibility**
 
-How might you make your application more accessible? What could you do with the User Interface to improve usability?
+The application should overall be structured and easy to navigate. System messages and menu should be enclosed in boxed sections for visual structure, whereas user input fields should have a line above and below to emphasise where input is required. This makes the system more easily accessible to users. 
 
-Reliability
+The main menu should be both logical and appealing to users, where options are clearly visible to promote accessibility. Users should be able to select their option easily with an understanding of what the option does and what results to expect.
+
+After the system completes a user action, it should ask the user if they are done to clear the screen and reload the main menu for further actions and prevent a cluttered and confusing interface.
+
+Furthermore, overall tone of system messages and menu should be very friendly and catering to the user and must maintain a warm character while giving clear and readable responses to boost overall user satisfaction. 
+
+**Reliability**
 
 What could perhaps not crash the whole system, but could be an issue and needs to be addressed? Data integrity? Duplicate data? API retrieval crash?
 
-**Wording of messages:** 
+The system should be able to operate reliably when retrieving and displaying character data from the My Little Pony API. Potential issues such as failed API requests, duplicate data, or incomplete responses should be handled gracefully without causing the application to crash. Additionally, the program must maintain data integrity by ensuring that information retrieved from the API is processed and displayed accurately.
 
-Overall tone of system messages and menu should be very friendly and catering to the user and must maintain a warm character while giving clear and readable responses. 
-
-**Main Menu:** 
-
-Main menu should be both well structured and aesthetically pleasing with small embellishments to lean into the fantasy genre of My Little Pony. The menu options should be cleary visible, and easy to select. Users should be able to select their option easily with an understanding of what the option does and what results they should expect.
-
-**Frames:** 
-
-System messages and menus should be enclosed in a box with visual structure, whereas user input fields should have a line above and below for emphasis.
-
-**Timing:**
-
- All system actions (eg. loading main menu, printing search results etc.) should occur within 2-3 seconds and navigating the project should feel natural and streamlined to users.
-
-**Clearing screen:**
-
- After the system completes a user action, it should ask the user if they are done to clear the screen and reload the main menu for further actions and prevent a cluttered and confusing interface.
+If the API cannot be reached or fails to return valid data, the system should display a clear, descriptive error message and allow the user to return to the main menu to retry request.
 
 ### Use Cases
 ## Design
