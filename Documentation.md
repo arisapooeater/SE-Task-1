@@ -21,12 +21,12 @@ To enable users to search for and sort characters in the animated series 'My Lit
 ### Functional Specifications
 **User Requirements:**
 
-The user needs to be able to select what information the system retrieves from the API and displays, whether it be a specific character or characters that align with a classification. There should be an input are where the user can type an input into the system to select an action based on the options displayed to the user.
+The user needs to be able to select what information the system retrieves from the API and displays, whether it be a specific character or characters that align with a classification. There should be an input area where the user can type an input into the system to select an action based on the options displayed to the user.
 
 
 **Inputs & Outputs:**
 
-The system should accept user inputs in the form of strings and provide outputs such as data retrieved from the API, system error messages and status codes.
+The system should accept user inputs in the form of strings and provide outputs such as data retrieved from the API (eg. name, residence, occupation, sex, type, image of character), system error messages and status codes.
 
 **Core Features:**
 
@@ -69,10 +69,89 @@ The system should be able to operate reliably when retrieving and displaying cha
 
 If the API cannot be reached or fails to return valid data, the system should display a clear, descriptive error message and allow the user to return to the main menu to retry request.
 
-### Use Cases
+---
+### Use Case #1: Search for a MLP character by name
+**Actors:** User
+
+**Preconditions:** 
+
+Conditions that must be met before the use case starts.
+
+**Main Flow:** 
+
+The step-by-step process of how the interaction occurs.
+
+**Alternative Flows (if needed):** 
+
+Variations or exceptions to the main flow.
+
+**Postconditions:** 
+
+The expected outcome or result after the use case is completed.
+
+---
+### Use Case #2: Filter MLP characters by attributes (sex/type)
+**Actors:** User
+
+**Preconditions:** 
+
+Conditions that must be met before the use case starts.
+
+**Main Flow:** 
+
+The step-by-step process of how the interaction occurs.
+
+**Alternative Flows (if needed):** 
+
+Variations or exceptions to the main flow.
+
+**Postconditions:** 
+
+The expected outcome or result after the use case is completed.
+
+---
+### Use Case #3: Add a character to the favlist() dictionary
+**Actors:** User
+
+**Preconditions:** 
+
+Conditions that must be met before the use case starts.
+
+**Main Flow:** 
+
+The step-by-step process of how the interaction occurs.
+
+**Alternative Flows (if needed):** 
+
+Variations or exceptions to the main flow.
+
+**Postconditions:** 
+
+The expected outcome or result after the use case is completed.
+
+---
+### Use Case #4: Remove a character from the favlist() dictionary
+**Actors:** User
+
+**Preconditions:** 
+
+Conditions that must be met before the use case starts.
+
+**Main Flow:** 
+
+The step-by-step process of how the interaction occurs.
+
+**Alternative Flows (if needed):** 
+
+Variations or exceptions to the main flow.
+
+**Postconditions:** 
+
+The expected outcome or result after the use case is completed.
+
 ## Design
 ### Structure Chart
-![Structure Chart](./images/structurechart.jpeg)
+![Structure Chart](./images/structurechart.png)
 
 ---
 ### Flowchart & Pseudocode
@@ -210,7 +289,7 @@ END remove_character()
 ---
 ### Data Dictionary
 | Variable | Data Type | Format for Display | Size in Bytes | Size for Display | Description | Example | Validation |
-|-|-|-|-|-|-|-|-|
+| |-|-|-|-|-|-|-|
 
 ---
 ### Gantt Chart
