@@ -75,19 +75,28 @@ If the API cannot be reached or fails to return valid data, the system should di
 
 **Preconditions:** 
 
-Conditions that must be met before the use case starts.
+- The application is running and the main menu is displayed to users
+- API connection is functioning and contains all character data required
+- The user is able to enter text into the command line
 
 **Main Flow:** 
 
-The step-by-step process of how the interaction occurs.
+1. User selects 'search character' from the main menu via a string input in the command line.
+2. The system prompts user to enter a character name.
+3. User enters character name.
+4. System sends request for data on character name from external API and API returns character data if found
+5. System processes and extracts relevant character data(eg. sex, type, occupation, residence) and displays character information to user.
+6. System reloads main menu for further interaction.
 
 **Alternative Flows (if needed):** 
 
-Variations or exceptions to the main flow.
+- **Invalid input:** If character is not found in API, the system will display an error message to the user displaying invalid input and that the character was not found.
+- **API Request Failure:** If API cannot be reached or fails to retrieve data, the system will display an error message informing the user that the request could not be done and should return user to main menu.
 
 **Postconditions:** 
 
-The expected outcome or result after the use case is completed.
+- The information on the selected character is displayed to the user, or an appropriate error message will be displayed
+- User will return to main menu and can continue interacting with the project
 
 ---
 ### Use Case #2: Filter MLP characters by attributes (sex/type)
@@ -95,19 +104,30 @@ The expected outcome or result after the use case is completed.
 
 **Preconditions:** 
 
-Conditions that must be met before the use case starts.
+- The application is running and the main menu is displayed to users
+- API connection is functioning and contains all character data required
+- The user is able to enter text into the command line
 
 **Main Flow:** 
 
-The step-by-step process of how the interaction occurs.
+1. User selects 'filter characters' from the main menu via a string input in the command line.
+2. The system displays to user main filter options (sex, type) and prompts user input
+3. User selects a main filter.
+4. System displays to user sub filter options within selected main filter and prompts user input
+5. User selects a sub filter.
+6. System sends request for data on selected sub filter from external API and API returns all characters who match the selected attribute
+7. System processes and extracts relevant characters and displays their names to user.
+6. System reloads main menu for further interaction. 
 
 **Alternative Flows (if needed):** 
 
-Variations or exceptions to the main flow.
+- **Invalid input:** If the user enters an invalid value, the system will return an error message stating invalid input and will return to main menu
+- **No results found:** If no characters match the selected filter, the system updates user with a message stating that no results were found
+
 
 **Postconditions:** 
 
-The expected outcome or result after the use case is completed.
+- A filtered list of characters that fit the selected attribute is displayed and the user returns to the view favlist() loop
 
 ---
 ### Use Case #3: Add a character to the favlist() dictionary
@@ -115,19 +135,31 @@ The expected outcome or result after the use case is completed.
 
 **Preconditions:** 
 
-Conditions that must be met before the use case starts.
+- The application is running and the main menu is displayed to users
+- API connection is functioning and contains all character data required
+- The favlist() dictionary exists in the system
+- The user is able to enter text into the command line
+- The user has already selected the 'view Favourites List' option from the main menu
 
 **Main Flow:** 
 
-The step-by-step process of how the interaction occurs.
+1. User selects 'add character' from the Favourites List menu via a string input in the command line.
+2. The system prompts user to enter a character name.
+3. User enters character name.
+4. System checks if character is already in favlist()
+5. If no, system sends request for data on character name from external API and API returns character data if found
+5. System processes and extracts relevant character data(eg. sex, type, occupation, residence) and adds it to favlist().
+6. System reloads favlist() and Favourites List menu for further interaction.
 
 **Alternative Flows (if needed):** 
 
-Variations or exceptions to the main flow.
+- **Character Found in favlist():** If the entered character is found in favlist(), system will return an error message stating the character is already in the dictionary and reprint the favlist()
+- **Invalid input:** If entered character does not exist in API, system will return an error message stating the character does not exist and reprint the favlist()
 
 **Postconditions:** 
 
-The expected outcome or result after the use case is completed.
+- The selected character is removed from favlist()
+- User returns to viewing favlist() loop
 
 ---
 ### Use Case #4: Remove a character from the favlist() dictionary
@@ -135,19 +167,30 @@ The expected outcome or result after the use case is completed.
 
 **Preconditions:** 
 
-Conditions that must be met before the use case starts.
+- The application is running and the main menu is displayed to users
+- API connection is functioning and contains all character data required
+- The favlist() dictionary exists in the system and contains at least one character
+- The user is able to enter text into the command line
+- The user has already selected the 'view Favourites List' option from the main menu
 
 **Main Flow:** 
 
-The step-by-step process of how the interaction occurs.
+1. User selects 'remove character' from the Favourites List menu via a string input in the command line.
+2. The system prompts user to enter a character name.
+3. User enters character name.
+4. System checks if character is in favlist() 
+5. If yes, system removes character data from favlist() and sends a success message to user.
+6. System reloads favlist() and Favourites List menu for further interaction.
 
 **Alternative Flows (if needed):** 
 
-Variations or exceptions to the main flow.
+- **Character Not Found in favlist():** If the entered character is not found in favlist(), system will return an error message stating the character was not found and reprint the favlist()
+- **favlist() is empty:** If favlist() is empty, the system will return an error message stating the favlist() is empty and reprint the favlist()
 
 **Postconditions:** 
 
-The expected outcome or result after the use case is completed.
+- The selected character is removed from favlist()
+- User returns to viewing favlist() loop
 
 ## Design
 ### Structure Chart
@@ -289,7 +332,16 @@ END remove_character()
 ---
 ### Data Dictionary
 | Variable | Data Type | Format for Display | Size in Bytes | Size for Display | Description | Example | Validation |
-| |-|-|-|-|-|-|-|
+|-|-|-|-|-|-|-|-|
+|user_input | string | text | 50 | <50 characters | a | ```1``` | Must match one of the main menu options |
+|character_name | string | text | 50 | <50 characters | Stores primary name of a character. | ```Twilight Sparkle``` | Cannot be empty | 
+|character_gender | string | text | 10 | <10 characters | Stores gender of a character. | ```Female``` | Must be accurate to APi values (Male/Female) |
+|character_kind | string/list | text | 50 | <50 characters | Stores species or type of a character. | ```["Unicorn", "Alicorn"]``` | Must be accurate to API values |
+|character_residence | string | multiline text | 200 | <200 characters | Stores where a character lives. | ```Canterlot``` | Must be accurate to API values and may contain newline characters |
+|character_occupation | string | multiline text | 300 | <300 characters | Stores the character's job or role. | ```Princess of Friendship``` | Optional if API field is missing |
+|character_image | string(URL) | image | 255 | Image Displayed | Stores URL of an image of the character | ```https://vignette.wikia.nocookie.net/mlp/images/b/bc/Princess_Twilight_Sparkle_ID_S4E26.png/revision/latest?cb=20160207045127``` | Must be a valid image URL from API |
+|filtered_characters | list | text | variable | n/a | Stores names of characters that match selected filter. | ```["Twilight Sparkle", "Pinkie Pie"]``` | No duplicate characters |
+|favlist | dictionary | structured data | variable | variable | Stores user's favourite characters and their data. | ```{ "Twilight Sparkle": {...} }``` | No duplicate character data |
 
 ---
 ### Gantt Chart
