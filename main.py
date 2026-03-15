@@ -4,22 +4,16 @@ import os
 
 def main():
     while True:
-        print("MLP Character Guide: 1.Search for character 2.Sort all characters 3.view favourites list 4.exit")
+        print("MLP Character Guide: 1.Search for character 2.Filter all characters 3.View favourites list 4.Exit")
         choice = input("Choose an option (1/2/3/4)")
 
         if choice == '1':
-            #search_character()
-            pass
+            name = input("Enter full name of character to search: ")
+            print(search_character(name))
         elif choice == '2':
-            choice = input("Sort by: 1.Gender 2.Type")
-            if choice == '1':
-                pass
-
-            sort_characters()
-            pass
+            filter_characters() 
         elif choice == '3':
-            #view_list()
-            pass
+            view_list() 
         elif choice == '4':
             print("Exiting MLP Character Guide...")
             break
@@ -27,5 +21,5 @@ def main():
             print("Invalid option. Please try again")
 
 
-#if __name__ == "__main__":
-    #main()
+if __name__ == "__main__":
+    main()

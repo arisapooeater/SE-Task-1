@@ -152,7 +152,7 @@ The expected outcome or result after the use case is completed.
 ## Design
 ### Structure Chart
 ![Structure Chart](./images/structurechart.png)
-
+REDO AGAIN RIP
 ---
 ### Flowchart & Pseudocode
 #### main()
@@ -192,13 +192,13 @@ END search_character(name)
 ```
 ![Search character Flowchart](./images/searchcharacterflowchart.png)
 
-#### sort_characters()
+#### filter_characters()
 ```
-BEGIN sort_characters()
+BEGIN filter_characters()
     DISPLAY 'What would you like to sort characters by? 1.Sex 2.Type'
-    INPUT sort
+    INPUT filter
     IF sort is 1 THEN
-        DISPLAY 'Sort by: 1. Female 2. Male'
+        DISPLAY 'Filter by: 1. Female 2. Male'
         INPUT sex
         IF sex is 1 THEN
             GET characters with sex = 'female' from API
@@ -207,8 +207,8 @@ BEGIN sort_characters()
         ELSE
             DISPLAY "Invalid input. Choose either option 1 or 2. Returning to main menu...'
         ENDIF
-    ELIF sort is 2 THEN
-        DISPLAY 'Sort by: 1. Pegasus 2. Earth Pony 3. Unicorn 4. Other creatures'
+    ELIF filter is 2 THEN
+        DISPLAY 'Filter by: 1. Pegasus 2. Earth Pony 3. Unicorn 4. Other creatures'
         INPUT type
         IF type is 1 THEN
             GET characters with type = 'pegasus' from API
@@ -224,9 +224,9 @@ BEGIN sort_characters()
     ELSE
         DISPLAY 'Invalid input. Choose option 1 or 2. Returning to main menu...'
     ENDIF
-END sort_characters()
+END filter_characters()
 ```
-![Sort Characters Flowchart](./images/sortcharactersflowchart.png)
+![Filter Characters Flowchart](./images/sortcharactersflowchart.png)
 
 #### view_list()
 ```

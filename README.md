@@ -7,7 +7,7 @@ This user interface is based on the animated series 'My Little Pony: Friendship 
 ## Requirements
 To run this program, you need the following dependencies:
 - 'requests' to make HTTP requests to the () API.
-- 'pandas' for 
+- 'pandas' for data cleaning/filtering.
 - 'numpy' for data manipulation.
 
 ## Install Dependencies
