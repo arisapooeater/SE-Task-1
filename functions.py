@@ -1,7 +1,7 @@
 import requests # Must import requests so we can use API
 import pandas as pd
 import numpy
-from term_image.image import from_file
+
 
 # API Base URL for all MLP characters
 API_URL = "https://ponyapi.net/v1/character/all"
@@ -22,8 +22,8 @@ def search_character(name): #functioning
 
     # Search manually
     for c in characters:
-        if c["name"].lower() == name.lower():
-            return {
+        if c["name"] == name.title():
+            return { #change formatting later
                 "name": c["name"],
                 "sex": c["sex"],
                 "kind": c["kind"],
@@ -31,11 +31,20 @@ def search_character(name): #functioning
                 "residence": c["residence"],
                 "image": c["image"][0] if c["image"] else None
             }
-
-    return ("Character not found.")
+    print("Character not found!")
+    return None
 
 def filter_characters():
     """Filter MLP characters by sex/kind and display to user."""
+
+    response = requests.get(API_URL)
+
+    if response.status_code != 200:
+        print("API error.")
+        return None
+    
+    characters = response.json()["data"]
+
     main_filter = input("""
 FILTER OPTIONS
 1. Sex 2.Kind """)
@@ -45,33 +54,45 @@ FILTER OPTIONS
 SUBFILTER OPTIONS
 1. Female 2.Male""")
         if sub_filter == "1":
-            pass
+            for c in characters:
+                if c["sex"] == "Female":
+                    print(c["name"])
         elif sub_filter == "2":
-            pass
+            for c in characters:
+                if c["sex"] == "Male":
+                    print(c["name"])
         else:
             print("Invalid input. Returning to main menu...")
     elif main_filter == "2":
         sub_filter = input("""
 SUBFILTER OPTIONS
-1.Pegasus 2. Unicorn 3.Earth Pony 4. Other creatures """)
+1.Pegasus 2. Unicorn 3.Earth Pony 4. Alicorn 5. Other creatures """)
         if sub_filter == "1":
-            name = "Pegasus" #not functioinig
-            search_character(name)
+            for c in characters:
+                if "Pegasus" in c["kind"]:
+                    print(c["name"])
         elif sub_filter == "2":
-            name = "Unicorn" #not functioinig
-            search_character(name)
+            for c in characters:
+                if "Unicorn" in c["kind"]:
+                    print(c["name"])
         elif sub_filter == "3":
-            name = "Earth Pony" #not functioinig
-            search_character(name)
+            for c in characters:
+                if "Earth" in c["kind"]:
+                    print(c["name"])
         elif sub_filter == "4":
-            pass 
+            for c in characters:
+                if "Alicorn" in c["kind"]:
+                    print(c["name"])
+        elif sub_filter == "5":
+            for c in characters:
+                if "Pegasus" not in c["kind"] and "Unicorn" not in c["kind"] and "Earth" not in c["kind"] and "Alicorn" not in c["kind"]:
+                    print(f"{c['name']}: {c['kind']}")
         else:
             print("Invalid input. Returning to main menu...")
     else:
         print("Invalid input. Returning to main menu...")
     
-
-def view_list(): #functioning
+def view_list(): 
     """Display all collected MLP characters in Favourites List and ask users if they want to add or remove characters."""
     exit = False
     empty = False
@@ -79,7 +100,13 @@ def view_list(): #functioning
         if favlist:
             for name, details in favlist.items():
                 empty = False
-                print(f"") #print name, sex, kind, occupation, residence, image
+                print(f"""
+Name: {details['name']}
+Sex: {details['sex']}
+Kind: {details['kind']}
+Occupation: {details['occupation']}
+Residence: {details['residence']}
+Image: {details['image']}""") 
         else:
             empty = True
             print("""
@@ -100,27 +127,28 @@ OPTIONS
                 print("Favourites List is empty.")
         else:
             print("Exiting Favourites List...")
-            exit == True
+            exit = True
 
 
 def add_character(): 
     """Add characters to Favourites List"""
-    name = input("What character would you like to add? (type full name): ")
-    character = search_character(name) # not functioning
+    name = input("What character would you like to add? (type full name): ").title()
+    character = search_character(name) 
     if character:
         favlist[character["name"]] = character
-        print(f"{character} added to Favourites List.")
+        print(f"{name.capitalize()} added to Favourites List.")
+    return
+    
 
 def remove_character(): 
     """Remove characters from Favourites List"""
-    user_input = input("What character would you like to remove? (type full name): ")
-    if user_input in favlist():
-        #del favlist(user_input)
-        pass
+    user_input = input("What character would you like to remove? (type full name): ").title()
+    if user_input in favlist:
+        favlist.pop(user_input)
+        print(f"{user_input} successfully removed!")
     else:
         print("Character not found! Returning to favourites list...")
+    return
 
 #<------------------------------TEST YOUR FUNCTIONS BELOW----------------------------->
 
-image = from_file("path/to/image.png")
-image.draw()
