@@ -1,6 +1,7 @@
 import requests # Must import requests so we can use API
 import pandas as pd
 import numpy
+from term_image.image import from_file
 
 # API Base URL for all MLP characters
 API_URL = "https://ponyapi.net/v1/character/all"
@@ -30,6 +31,7 @@ def search_character(name): #functioning
                 "residence": c["residence"],
                 "image": c["image"][0] if c["image"] else None
             }
+
     return ("Character not found.")
 
 def filter_characters():
@@ -51,12 +53,22 @@ SUBFILTER OPTIONS
     elif main_filter == "2":
         sub_filter = input("""
 SUBFILTER OPTIONS
-1. """)
+1.Pegasus 2. Unicorn 3.Earth Pony 4. Other creatures """)
+        if sub_filter == "1":
+            name = "Pegasus" #not functioinig
+            search_character(name)
+        elif sub_filter == "2":
+            name = "Unicorn" #not functioinig
+            search_character(name)
+        elif sub_filter == "3":
+            name = "Earth Pony" #not functioinig
+            search_character(name)
+        elif sub_filter == "4":
+            pass 
+        else:
+            print("Invalid input. Returning to main menu...")
     else:
-        pass
-
-    
-    print(search_character(filter)) #not functioning
+        print("Invalid input. Returning to main menu...")
     
 
 def view_list(): #functioning
@@ -93,11 +105,11 @@ OPTIONS
 
 def add_character(): 
     """Add characters to Favourites List"""
-    user_input = input("What character would you like to add? (type full name): ")
-    character = search_character(filter) # not functioning
+    name = input("What character would you like to add? (type full name): ")
+    character = search_character(name) # not functioning
     if character:
         favlist[character["name"]] = character
-        print(f"{character['name']} added to Favourites List.")
+        print(f"{character} added to Favourites List.")
 
 def remove_character(): 
     """Remove characters from Favourites List"""
@@ -108,4 +120,7 @@ def remove_character():
     else:
         print("Character not found! Returning to favourites list...")
 
-#<------------------------------TEST YOUR FUNCTIONS BELOW------------------------------>
+#<------------------------------TEST YOUR FUNCTIONS BELOW----------------------------->
+
+image = from_file("path/to/image.png")
+image.draw()
