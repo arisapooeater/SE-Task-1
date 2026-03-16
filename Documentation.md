@@ -347,6 +347,25 @@ END remove_character()
 ### Gantt Chart
 ![Gantt Chart](./images/Ganttchart.png)
 ## Development
+### Evaluation of Functioning Program
+The functioning program I have created so far overall completes what it is required to do, with all functions working without errors. It also responds with proper responses to user input/API errors gracefully without crashing the application, so overall in terms the functional requirements, this prototype is quite decent.
+
+**Examples Interactions**
+
+![view_list() Functioning Example](./images/favlist_screenshot1.png)
+![remove_character() Functioning Example](./images/favlist_screenshot2.png)
+![search_character() Functioning Example](./images/search_screenshot.png)
+![Error Example](./images/search_screenshot1.png)
+![Error Example](./images/menu_screenshot.png)
+
+However, in terms of usability, the main menu lacks a help option (which is a requirement in the assessment task) and lacks clarity in the interface as there is no clear structure or breaks, hindering readability and making the application hard to navigate. 
+
+As you can see in the below image, some data from the favlist() dictionary or the API are still contained in [] and '' when displayed to users, and although it doesn't stop the program from functioning, it just makes the UX more unappealing for users. Additionally, the images of characters aren't properly displayed in the program but rather users are given a URL link to the image, which just makes information less accessible just within the interface. The purpose of this application is for users to be able to access all general character information WITHIN the application, so the system should be able to display the image within VSC for the sake of the users' convenience.
+
+![add_character() Functioning Example](./images/favlist_screenshot.png)
+
+Overall, there are just generally a plethora of small inconsistencies and distinct lack of structure in the interface that ultimately negatively impact the user experience. Although this prototype does comply to the functional requirements, I believe significant consideration to this project's non-functional requirements is required for a positive UX to be delivered and this project to be successful.
+
 ## Integration
 ## Testing and Debugging
 ### Student Feedback #1 - Yuna Shin
@@ -356,4 +375,3 @@ END remove_character()
 - feedback based on functional and nonfunctional requirements, response time, load testing and the suitability of the requirements.txt and README.md file
 
 ## Maintenance
-Evaluate the role that maintenance would play in the continued implementation of this software 
