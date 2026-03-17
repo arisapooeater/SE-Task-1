@@ -367,6 +367,9 @@ As you can see in the below image, some data from the favlist() dictionary or th
 Overall, there are just generally a plethora of small inconsistencies and distinct lack of structure in the interface that ultimately negatively impact the user experience. Although this prototype does comply to the functional requirements, I believe significant consideration to this project's non-functional requirements is required for a positive UX to be delivered and this project to be successful.
 
 ## Integration
+### Evaluation of Program (w/ API and Python Modules)
+-used pandas
+
 ## Testing and Debugging
 ### Student Feedback #1 - Yuna Shin
 - feedback based on functional and nonfunctional requirements, response time, load testing and the suitability of the requirements.txt and README.md file
@@ -375,3 +378,105 @@ Overall, there are just generally a plethora of small inconsistencies and distin
 - feedback based on functional and nonfunctional requirements, response time, load testing and the suitability of the requirements.txt and README.md file
 
 ## Maintenance
+### Explain how you would handle issues caused by changes to the API over time
+Monitor the API provider's changelog, status page, and announcement channels (email, RSS, Slack, Twitter).
+
+Implement versioned API client logic so you can support multiple API versions and migrate incrementally.
+
+Add automated tests that mock the API responses (unit tests and contract tests) to detect breaking changes early.
+
+Wrap external API calls in a thin adapter layer that centralizes parsing, error handling, and retries. When the API changes, update the adapter rather than scattering fixes through the codebase.
+
+Use feature flags or configuration to switch between old and new endpoints/behaviors during migration.
+
+Validate input and handle unexpected or missing fields gracefully (defensive parsing with sensible defaults and clear error messages).
+
+Log and alert on anomalous responses (schema changes, unexpected status codes, rate-limit responses) so issues are visible in production.
+
+If the API deprecates functionality, plan migrations and maintain backward compatibility for a transition period; communicate with stakeholders and coordinate updates.
+
+### Explain how you would ensure the program remains compatible with new versions of Python and libraries like requests and matplotlib
+
+Pin dependencies with a suitable policy (use minimal necessary pins in requirements/dev requirements; prefer semantic ranges) and maintain an automated dependency update process (dependabot, Renovate).
+
+Add continuous integration (CI) matrix builds to run tests across supported Python versions (e.g., 3.10, 3.11, 3.12) and key dependency versions.
+
+Write comprehensive unit and integration tests covering core functionality and critical library interactions (HTTP calls, plotting output).
+
+Use library abstraction layers where appropriate (for example, a small wrapper around requests to centralize HTTP behavior) to minimize update surface.
+
+Follow deprecation warnings in CI and local development; treat warnings as part of code quality checks and fix causes proactively.
+
+Keep an eye on release notes of major dependencies; plan and allocate time for upgrades when breaking changes are announced.
+
+Maintain a test environment to validate major upgrades before production deployment; use staging to catch runtime issues.
+
+Update documentation and minimum supported Python version in metadata (setup.py/pyproject.toml) as you adopt newer Python releases.
+
+### Describe the steps you would take to fix a bug found in the program after deployment
+
+Reproduce: Gather logs, error messages, stack traces, and steps to reproduce. If possible, reproduce the issue locally or in a staging environment.
+
+Triage: Assess severity and impact, prioritize the bug (P0, P1, etc.), and inform stakeholders if it affects users or data integrity.
+
+Isolate: Narrow down the cause using logs, debugging, and targeted tests. Add or update unit/integration tests that capture the failing behavior.
+
+Fix: Implement a minimal, well-tested fix. Prefer fixes that are easy to review and revert if necessary.
+
+Review: Submit a change with a clear description and include tests. Use code review and automated CI checks.
+
+Deploy: Roll out the fix to staging first, verify behavior, then deploy to production. Use a canary or phased release if appropriate.
+
+Monitor: Observe logs and metrics for regression or related issues post-deployment.
+
+Postmortem: Document the root cause, corrective actions, and preventive measures (tests, monitoring, documentation updates). Update issue tracking and communicate resolution to stakeholders.
+
+### Outline how you would maintain clear documentation and ensure the program remains easy to update in the future
+
+Keep documentation close to code (README, docstrings, and a docs/ directory) and version it with the repository.
+
+Document architecture, API contracts, deployment steps, environment variables, and common troubleshooting scenarios.
+
+Maintain an up-to-date changelog and release notes for important updates and breaking changes.
+
+Invest in automated tests and CI that run on pull requests so changes are validated before merging.
+
+Use code style, linters, and static analysis to keep the codebase consistent and reduce cognitive load for contributors.
+
+Modularize code with clear separation of concerns (adapters for external APIs, services for business logic, CLI/UI for presentation).
+
+Add examples and sample data to make it easy to validate behavior after changes.
+
+Use dependency management and automation (dependabot/renovate) to keep libraries current and schedule regular upgrade windows.
+
+Encourage contributing guidelines and document how to add tests and run the project locally to lower the barrier for future contributors.
+
+## Final Evaluation
+### Evaluate the current functionality of the program in terms of how well it addresses the functional and non-functional requirements
+Functional: Assess whether the program correctly implements required features (fetching/parsing weather data, producing visualizations, etc.). Verify with unit/integration tests and sample runs.
+
+Non-functional: Evaluate reliability (error handling, retries), performance (latency, memory), maintainability (modular code, clear tests), and usability (clear CLI/UX and docs).
+
+Summarize gaps uncovered by tests, logs, or user feedback and rate whether requirements are met, partially met, or not met.
+
+### Discuss areas for improvement or new features that could be added
+Improve resilience (better retry/backoff, caching, rate-limit handling).
+
+Enhance observability (metrics, structured logging, alerts).
+
+Add features: historical data storage, multi-source aggregation, user-configurable plots, and export formats.
+
+Improve UX: interactive visualizations, configuration via UI or environment variables, or packaging as a web service.
+
+Automate dependency updates and increase test coverage for edge cases.
+
+### Evaluate how the project was managed throughout its development and maintenance, including your time management and how challenges were addressed during the software development lifecycle
+Reflect on planning: Were requirements clear, and were milestones realistic?
+
+Review process: Were code reviews, CI, and testing enforced consistently?
+
+Time management: Note if sprints/estimates were accurate and where bottlenecks occurred.
+
+Challenges: Document blockers (API changes, environment issues) and how they were mitigated (workarounds, communication).
+
+Lessons learned: Extract improvements for future projects: clearer spec, earlier testing, better monitoring, and incremental releases.
