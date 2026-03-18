@@ -201,9 +201,10 @@ REDO AGAIN RIP
 #### main()
 ```
 BEGIN main()
+    log = {}
     favlist = {}
     WHILE True
-        DISPLAY "[MLP Character Guide!] 1.Search character 2.Sort characters 3.View favourites list 4.Exit"
+        DISPLAY "[MLP Character Guide!] 1.Search character 2.Sort characters 3.View favourites list 4.View user interactions log 5.Exit"
         INPUT choice
         IF choice is 1 THEN
             DISPLAY 'What character would you like to search?: '
@@ -214,6 +215,8 @@ BEGIN main()
         ELIF choice is 3 THEN
             view_list()
         ELIF choice is 4 THEN
+            DISPLAY log
+        ELIF choice is 5 THEN
             DISPLAY 'Exiting program...'
             break
         ELSE
@@ -254,15 +257,17 @@ BEGIN filter_characters()
         DISPLAY 'Filter by: 1. Pegasus 2. Earth Pony 3. Unicorn 4. Other creatures'
         INPUT type
         IF type is 1 THEN
-            GET characters with type = 'pegasus' from API
+            GET characters with 'pegasus' in 'kind' from API
         ELIF type is 2 THEN
-            GET characters with type = 'earth pony' from API
+            GET characters with 'earth pony' in 'kind' from API
         ELIF type is 3 THEN
-            GET characters with type = 'unicorn' from API
+            GET characters with 'unicorn' in 'kind' from API
         ELIF type is 4 THEN
-            GET characters where type is NOT pegasus, earth pony or unicorn from API
+            GET characters with 'alicorn' in 'kind' from API
+        ELIF type is 5 THEN
+            GET characters where 'kind' is NOT pegasus, earth pony, unicorn or alicorn from API
         ELSE
-            DISPLAY 'Invalid input. Choose option between 1-4 (1/2/3/4). Returning to main menu...'
+            DISPLAY 'Invalid input. Choose option between 1-5 (1/2/3/4/5). Returning to main menu...'
         ENDIF
     ELSE
         DISPLAY 'Invalid input. Choose option 1 or 2. Returning to main menu...'
@@ -276,7 +281,11 @@ END filter_characters()
 BEGIN view_list()
     exit = False
     WHILE exit is False
-        DISPLAY favlist()
+        IF favlist is empty THEN
+            DISPLAY 'Favourites List is empty!'
+        ELSE
+            DISPLAY favlist
+        ENDIF
         DISPLAY '1. Add character 2. Remove Character 3. Exit favourites list'
         INPUT choice
         IF choice is 1 THEN
