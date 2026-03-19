@@ -19,7 +19,7 @@ def search_character(name): #functioning
 
     if response.status_code != 200:
         print("API error.")
-        return None
+        return 
 
     characters = response.json()["data"]
 
@@ -28,7 +28,7 @@ def search_character(name): #functioning
         if c["name"] == name.title():
             return { #change formatting later
                 "Name": c["name"],
-                "Sex": c["sex"],
+                "Gender": c["sex"],
                 "Kind": ", ".join(c["kind"]) if isinstance(c["kind"], list) else c["kind"],
                 "Occupation": c["occupation"],
                 "Residence": c["residence"],
@@ -44,7 +44,7 @@ def filter_characters():
 
     if response.status_code != 200:
         print("API error.")
-        return None
+        return 
     
     characters = response.json()["data"]
 

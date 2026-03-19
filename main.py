@@ -14,10 +14,10 @@ def main():
 | 5.Exit                        |
  _______________________________""")
         time.sleep(1)
-        choice = input("""
+        user_input = input("""
 Choose an option (1/2/3/4/5): """).strip()
         time.sleep(1)
-        if choice == '1':
+        if user_input == '1':
             name = input("""
 Enter full name of character to search: """).strip()
             time.sleep(1)
@@ -27,20 +27,20 @@ Enter full name of character to search: """).strip()
                 print("")
                 for key, value in character.items():
                     print(f"\033[1m{key}\033[0m: {value}")
-        elif choice == '2':
+        elif user_input == '2':
             log_df.loc[len(log_df)] = ["filter", ""]
             filter_characters() 
-        elif choice == '3':
+        elif user_input == '3':
             log_df.loc[len(log_df)] = ["view favourites list", ""]
             view_list() 
-        elif choice == '4':
+        elif user_input == '4':
             if log_df.empty:
                 print("""
 User interactions log is empty. Returning to main menu...""")
             else:
                 print("")
                 print(log_df.to_string(index=False))
-        elif choice == '5':
+        elif user_input == '5':
             print("""
  ________________________________ 
 | Exiting MLP Character Guide... |
