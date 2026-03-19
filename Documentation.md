@@ -201,8 +201,8 @@ REDO AGAIN RIP
 #### main()
 ```
 BEGIN main()
-    log = {}
-    favlist = {}
+    CREATE log_df as a dictionary
+    CREATE favlist as a dictionary
     WHILE True
         DISPLAY "[MLP Character Guide!] 1.Search character 2.Sort characters 3.View favourites list 4.View user interactions log 5.Exit"
         INPUT choice
@@ -247,9 +247,9 @@ BEGIN filter_characters()
         DISPLAY 'Filter by: 1. Female 2. Male'
         INPUT sex
         IF sex is 1 THEN
-            GET characters with sex = 'female' from API
+            DISPLAY characters with sex = 'female' from API
         ELIF sex is 2 THEN
-            GET characters with sex = 'male' from API
+            DISPLAY characters with sex = 'male' from API
         ELSE
             DISPLAY "Invalid input. Choose either option 1 or 2. Returning to main menu...'
         ENDIF
@@ -257,15 +257,15 @@ BEGIN filter_characters()
         DISPLAY 'Filter by: 1. Pegasus 2. Earth Pony 3. Unicorn 4. Other creatures'
         INPUT type
         IF type is 1 THEN
-            GET characters with 'pegasus' in 'kind' from API
+            DISPLAY characters with 'pegasus' in 'kind' from API
         ELIF type is 2 THEN
-            GET characters with 'earth pony' in 'kind' from API
+            DISPLAY characters with 'earth pony' in 'kind' from API
         ELIF type is 3 THEN
-            GET characters with 'unicorn' in 'kind' from API
+            DISPLAY characters with 'unicorn' in 'kind' from API
         ELIF type is 4 THEN
-            GET characters with 'alicorn' in 'kind' from API
+            DISPLAY characters with 'alicorn' in 'kind' from API
         ELIF type is 5 THEN
-            GET characters where 'kind' is NOT pegasus, earth pony, unicorn or alicorn from API
+            DISPLAY characters where 'kind' is NOT pegasus, earth pony, unicorn or alicorn from API
         ELSE
             DISPLAY 'Invalid input. Choose option between 1-5 (1/2/3/4/5). Returning to main menu...'
         ENDIF
@@ -274,7 +274,7 @@ BEGIN filter_characters()
     ENDIF
 END filter_characters()
 ```
-![Filter Characters Flowchart](./images/sortcharactersflowchart.png)
+![Filter Characters Flowchart](./images/filtercharactersflowchart.png)
 
 #### view_list()
 ```
@@ -339,9 +339,15 @@ END remove_character()
 ![Remove character Flowchart](./images/removecharacterflowchart.png)
 
 #### record_actions()
-BEGIN record_actions()
+```
+BEGIN record_actions(action, details)
+    SET timestamp to current time
+    CREATE new_row as a dictionary WITH timestamp, action, details
+    ADD new_row to log_df
+END record_actions(action, details)
+```
 
-![Record Actions Flowchart]
+![Record Actions Flowchart](./images/recordactionsflowchart.png)
 ---
 ### Data Dictionary
 | Variable | Data Type | Format for Display | Size in Bytes | Size for Display | Description | Example | Validation |

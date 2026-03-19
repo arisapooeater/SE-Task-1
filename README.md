@@ -8,7 +8,7 @@ This user interface is based on the animated series 'My Little Pony: Friendship 
 To run this program, you need the following dependencies:
 - 'requests' to make HTTP requests to the () API.
 - 'pandas' for data cleaning/filtering.
-- 'numpy' for data manipulation.
+- 'term-image' for image visualisation
 
 ## Install Dependencies
 1. Go to the top left of your VSC and click 'Terminal'

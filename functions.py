@@ -240,4 +240,10 @@ def record_actions(action, details=""):
     log_df.loc[len(log_df)] = new_row
 
 #<------------------------------TEST YOUR FUNCTIONS BELOW----------------------------->
+from term_image.image import from_url
 
+# Create an image instance from a file path
+image = from_url("https://vignette.wikia.nocookie.net/mlp/images/b/bc/Princess_Twilight_Sparkle_ID_S4E26.png")
+
+# Display the image in the terminal
+image.draw()
