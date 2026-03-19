@@ -1,6 +1,7 @@
 import requests # Must import requests so we can use API
 import pandas as pd
 from datetime import datetime
+from term_image.image import from_url
 import time
 import os
 
@@ -196,6 +197,7 @@ Enter action (1/2/3): """).strip()
 
 def add_character(): 
     """Add characters to Favourites List"""
+    global log_df
     name = input("""
 What character would you like to add? (enter full name): """).title().strip()
     character = search_character(name) 
@@ -216,6 +218,7 @@ What character would you like to add? (enter full name): """).title().strip()
 
 def remove_character(): 
     """Remove characters from Favourites List"""
+    global log_df 
     name = input("""
 What character would you like to remove? (enter full name): """).title().strip()
     time.sleep(1)
@@ -240,10 +243,10 @@ def record_actions(action, details=""):
     log_df.loc[len(log_df)] = new_row
 
 #<------------------------------TEST YOUR FUNCTIONS BELOW----------------------------->
-from term_image.image import from_url
+
 
 # Create an image instance from a file path
-image = from_url("https://vignette.wikia.nocookie.net/mlp/images/b/bc/Princess_Twilight_Sparkle_ID_S4E26.png")
+#image = from_url("https://vignette.wikia.nocookie.net/mlp/images/b/bc/Princess_Twilight_Sparkle_ID_S4E26.png")
 
 # Display the image in the terminal
-image.draw()
+#image.draw()

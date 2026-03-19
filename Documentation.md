@@ -366,27 +366,48 @@ END record_actions(action, details)
 ![Gantt Chart](./images/Ganttchart.png)
 ## Development
 ### Evaluation of Functioning Program
-The functioning program I have created so far overall completes what it is required to do, with all functions working without errors. It also responds with proper responses to user input/API errors gracefully without crashing the application, so overall in terms the functional requirements, this prototype is quite decent.
+The functioning program I have created so far overall completes what it is required to do, with all IF statement options working without any big errors as there is no API or modules incorporated yet (these IF statements will later call functions). It also responds with proper responses to user input errors gracefully without crashing the application, so overall in terms the functional requirements, this prototype is quite decent.
+
+**User input error Handling Example**
+
+![Error Message Example](./images/error_scrnsht1.png)
+
+However, in terms of usability, the main menu lacks a help option (which is a requirement in the assessment task) and lacks clarity in the interface as there is no clear structure or line breaks, hindering readability and making the application hard to navigate. This can be seen in the below UX examples.
 
 **Examples Interactions**
 
-![view_list() Functioning Example](./images/favlist_screenshot1.png)
-![remove_character() Functioning Example](./images/favlist_screenshot2.png)
-![search_character() Functioning Example](./images/search_screenshot.png)
-![Error Example](./images/search_screenshot1.png)
-![Error Example](./images/menu_screenshot.png)
+![Search character Functioning Example](./images/search_scrnsht1.png)
+![Filter all characters Functioning Example](./images/filter_scrnsht1.png)
+![View Favourites List Functioning Example](./images/favlist_scrnsht1.png)
+![User interaction log Example](./images/mistake_scrnsht1.png)
+![Exit Functioning Example](./images/mistake_scrnsht1.png)
 
-However, in terms of usability, the main menu lacks a help option (which is a requirement in the assessment task) and lacks clarity in the interface as there is no clear structure or breaks, hindering readability and making the application hard to navigate. 
+Additionally, since there is no way to confirm the character is not in the API as the API is not incorporated into the code yet, there are some small errors that occur in the program, such as when users enter a character name:
 
-As you can see in the below image, some data from the favlist() dictionary or the API are still contained in [] and '' when displayed to users, and although it doesn't stop the program from functioning, it just makes the UX more unappealing for users. Additionally, the images of characters aren't properly displayed in the program but rather users are given a URL link to the image, which just makes information less accessible just within the interface. The purpose of this application is for users to be able to access all general character information WITHIN the application, so the system should be able to display the image within VSC for the sake of the users' convenience.
 
-![add_character() Functioning Example](./images/favlist_screenshot.png)
+![Mistake in code](./images/mistake_scrnsht1.png)
 
-Overall, there are just generally a plethora of small inconsistencies and distinct lack of structure in the interface that ultimately negatively impact the user experience. Although this prototype does comply to the functional requirements, I believe significant consideration to this project's non-functional requirements is required for a positive UX to be delivered and this project to be successful.
+Overall, there is just generally distinct lack of structure in the interface that ultimately negatively impact the user experience. Although this prototype does effectively comply to the functional requirements so far, I believe significant consideration to this project's non-functional requirements is required (after API and modules are integrated and functioning) for a positive UX to be delivered and this project to be successful.
 
 ## Integration
 ### Evaluation of Program (w/ API and Python Modules)
--used pandas
+This prototype now has integrated both the API and all essential modules (requests, Pandas) and successfully executes most actions as seen in the below examples of the program's functions. The data the system retrieves is accurate to the API and My Little Pony, and is efficiently displayed to the user.
+
+**Examples Interactions**
+
+![search_character() Functioning Example](./images/search_scrnsht2.png)
+![filter_characters() Example](./images/filter_scrnsht2.png)
+![view_list() Functioning Example](./images/favlist_scrnsht2.png)
+![User interactions log Functioning Example](./images/log_scrnsht2.png)
+![User input error Example](./images/error_scrnsht2.png)
+![Exit Functioning Example](./images/exit_scrnsht2.png)
+
+However, there is an error in both the add_character() and remove_character() functions that can be seen in the screenshot below that causes the system to crash, which negatively impacts this systems reliability and functionality. Apparently log_df isn't properly defined, so that will be the immediate next step I will need to take for improving this interface and ensuring it aligns with functional requirements. 
+![System crash Example](./images/systemcrash_scrnsht2.png)
+
+On the other hand, since my first prototype, the UX has been greatly improved and the non-functional requirements has been addressed adequately. The implementation of boxes and line breaks has created a clearer structure, and the use of time.sleep(x) has allowed for a streamlined user experience. One small improvement that can be made for the final interface is the images of characters should be properly displayed in the terminal rather than a URL link to the image, as it just makes information less accessible just within the interface. The purpose of this application is for users to be able to access all general character information WITHIN the application, so the system should be able to display the image within VSC for the sake of the users' convenience.
+
+Finally, as the record_actions() function has been created to preserve user interactions, I want to further clean up the UX by importing the os module and clearing the screen after users are done with an action. This will overall promote a more coherent system structure and make the program more easier to navigate for users, boosting accessibility and efficiency.
 
 ## Testing and Debugging
 ### Student Feedback #1 - Yuna Shin
