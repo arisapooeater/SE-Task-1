@@ -182,14 +182,14 @@ OTHER CREATURES""")
                 if "Pegasus" not in c["kind"] and "Unicorn" not in c["kind"] and "Earth" not in c["kind"] and "Alicorn" not in c["kind"]:
                     kind = ", ".join(c["kind"]) if isinstance(c["kind"], list) else c["kind"]
                     print(f"{c['name']}: {kind}")
-        elif sub_filter == 'h':
+        elif sub_filter.lower() == 'h':
             print(help_text)
         else:
             print("Invalid input. Enter a number between 1-5 (1/2/3/4/5). Returning to main menu...") # Display user input error message
         
         # Record user interaction in log_df
         record_actions(log_df, "remove character", sub_filter)
-    elif main_filter == 'h':
+    elif main_filter.lower() == 'h':
         print(help_text)
     else:
         print("Invalid input. Enter a number between 1-2 (1/2). Returning to main menu...") # Display user input error message
@@ -239,18 +239,22 @@ Enter action (1/2/3): """).strip()
         time.sleep(1)
         if user_input == "1":
             add_character(log_df) # Call add_character() function
+            clear_screen("Favourites List")
         elif user_input == "2":
             if empty == False: # Check favlist wasn't empty
                 remove_character(log_df) # Call remove_character() function
+                clear_screen("Favourites List")
             else:
                 print("Favourites List is empty. Action cannot be taken. Returning to Favourites List...") # Display error message as there are no characters available to remove from favlist
+                os.system('cls')
         elif user_input == "3":
             print("""
  ____________________________
 | Exiting Favourites List... |
  ____________________________""")
             exit = True # Break while loop and return to main menu loop
-        elif user_input == 'h':
+            os.system('cls')
+        elif user_input.lower() == 'h':
             print(help_text)
         else:
             print("Invalid input. Enter a number between 1-3 (1/2/3). Returning to Favourites List...") # Display user input error message
@@ -278,7 +282,7 @@ What character would you like to add? (enter full name): """).title().strip()
  _____________________________________________________________________
 | {name.title()} added to Favourites List.                       
  _____________________________________________________________________""")
-    elif name == 'h':
+    elif name.lower() == 'h':
         print(help_text)
     else:
         print("Character not found! Returning to Favourites List...") # Display user input error message
@@ -300,7 +304,7 @@ What character would you like to remove? (enter full name): """).title().strip()
  _____________________________________________________________________
 | {name.title()} successfully removed!                                  
  _____________________________________________________________________""")
-    elif name == 'h':
+    elif name.lower() == 'h':
         print(help_text)
     else:
         print("Character not found! Returning to Favourites List...")  # Display user input error message
@@ -328,4 +332,18 @@ def display_image(url):
     return
 
 
-
+def clear_screen(menu):
+    """Clear terminal when user is done with an action"""
+    clear = ''
+    while clear != 'yes': # Loop the question until user enters 'yes'
+        time.sleep(0.5)
+        clear = input(f"""
+Once you're ready to return to {menu}, enter 'yes': """).strip().lower() # Change {menu} depending on action and loop the user is in (eg. Favourites List, Main Menu)
+        if clear == 'yes':
+            clear = 'yes'
+            os.system('cls') # Clear screen
+            time.sleep(1)
+            return
+        else:
+            time.sleep(0.5)
+            print("Invalid input! Please try again.") # Display user input error message

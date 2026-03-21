@@ -26,8 +26,7 @@ Choose an option (1/2/3/4/5): """).strip()
         if user_input == '1':
             name = input("""
 Enter full name of character to search: """).strip()
-            time.sleep(1)
-            if name == 'h':
+            if name.lower() == 'h':
                 print(help_text)
             else:
                 # Record user interaction in log_df
@@ -40,8 +39,10 @@ Enter full name of character to search: """).strip()
                             print(f"\033[1m{key}\033[0m: {value}")
                         else: 
                             display_image(character["Image"]) # Call display_image() function to visualise image in terminal
+            clear_screen("Main Menu")
         elif user_input == '2':
             filter_characters(log_df) # Call filter_characters() function
+            clear_screen("Main Menu")
         elif user_input == '3':
             view_list(log_df) # Call view_list() function
         elif user_input == '4':
@@ -49,24 +50,29 @@ Enter full name of character to search: """).strip()
             if log_df.empty:
                 print("""
 User interactions log is empty. Returning to main menu...""")
+                time.sleep(1.5)
+                os.system('cls')
             # Display log_df
             else:
                 print("")
                 print(log_df.to_string(index=False)) # Display log_df as a string to users
+                clear_screen("Main Menu")
         elif user_input == '5':
             print("""
  ________________________________ 
 | Exiting MLP Character Guide... |
  ________________________________""")
             break
-        elif user_input == 'h':
+        elif user_input.lower() == 'h':
             print(help_text)
         else:
             print("""
 Invalid input. Enter a number between 1-4 (1/2/3/4). Please try again""") # Display user input error message
-        time.sleep(2)
+            time.sleep(1.5)
+            os.system('cls')
         
 if __name__ == "__main__":
     main()
 
 
+               
