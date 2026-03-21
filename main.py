@@ -27,18 +27,19 @@ Choose an option (1/2/3/4/5): """).strip()
             name = input("""
 Enter full name of character to search: """).strip()
             time.sleep(1)
-            # Record user interaction in log_df
-            record_actions(log_df, "search character", name)
-            character = search_character(name) # Call search_character() function and store in character
-            if character:
-                print("")
-                for key, value in character.items(): 
-                    if key != "Image": # Check key in dictionary is not "Image" before displaying to user
-                        print(f"\033[1m{key}\033[0m: {value}")
-                    else: 
-                        display_image(character["Image"]) # Call display_image() function to visualise image in terminal
-            elif character.lowercase() == 'h':
+            if name == 'h':
                 print(help_text)
+            else:
+                # Record user interaction in log_df
+                record_actions(log_df, "search character", name)
+                character = search_character(name) # Call search_character() function and store in character
+                if character:
+                    print("")
+                    for key, value in character.items(): 
+                        if key != "Image": # Check key in dictionary is not "Image" before displaying to user
+                            print(f"\033[1m{key}\033[0m: {value}")
+                        else: 
+                            display_image(character["Image"]) # Call display_image() function to visualise image in terminal
         elif user_input == '2':
             filter_characters(log_df) # Call filter_characters() function
         elif user_input == '3':
@@ -58,7 +59,7 @@ User interactions log is empty. Returning to main menu...""")
 | Exiting MLP Character Guide... |
  ________________________________""")
             break
-        elif user_input.lowercase() == 'h':
+        elif user_input == 'h':
             print(help_text)
         else:
             print("""
