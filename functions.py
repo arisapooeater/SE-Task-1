@@ -13,6 +13,42 @@ API_URL = "https://ponyapi.net/v1/character/all"
 # Dictionary to store collected favourite characters
 favlist = {}
 
+# Storing the help message
+help_text = """
+ ___________________________________________________________________________________________________________
+|                                    HELP !! Answering Common Questions                                     |
+|-----------------------------------------------------------------------------------------------------------|
+| 1. Why does the system keep saying my input is invalid?                                                   |
+|    --> You need to respond with the NUMBER of your chosen action when you are given a list of options     |
+|    --> Remember to spell any names you type with correct spelling or the system will not process it!      |
+|                                                                                                           |
+| 2. Why does the system keep saying "API Error."?                                                          |
+|    --> If the system is responding with "API Error.", that means the request made to our information      |
+|        source was unsuccessful and there is a problem somewhere!                                          |
+|    --> In this case, please contact arisa.komatsu@education.nsw.gov.au and notify me on the error so it   |
+|        can be fixed ASAP :)                                                                               |
+|                                                                                                           |
+| 3. What is the Favourites List and how can I use it?                                                      |
+|    --> The Favourites List is a personal list you can create of all your favourite MLP characters!        |
+|    --> You can add and remove characters to your liking and it will store and display their general       |
+|        character information.                                                                             |
+|    --> It can be used for comparing the stats on characters, or just collecting your MLP biases!          |
+|    --> The Favourites List loops until your satisfied with the list you've created, in which you can      |   
+|        select the exit option to return to the Main Menu and continue interacting with the system!        |
+|                                                                                                           |
+| 4. What is the user interactions log?                                                                     |
+|    --> The user interactions log is a local record of all the interactions YOU as the user have made      |
+|        with our system.                                                                                   |
+|    --> You can view what you've done on our application within the runtime session                        |
+|    --> Don't worry, no personal information is retrieved and all data is cleared after each runtime       |
+|        session!                                                                                           |
+|-----------------------------------------------------------------------------------------------------------|
+|                                                                                                           |
+| For further help with navigating the MLP Character Guide or if you have a "ModuleNotFoundError", please   |
+|                          go to the README file for a more intensive explanation !                         |
+|                                                                                                           |
+ ___________________________________________________________________________________________________________"""
+
 def search_character(name): 
     """Search for a MLP character by name and return its details.""" # Triple quotes is a docstring - allows multiline comments!
 
@@ -92,7 +128,7 @@ MALE CHARACTERS""")
                 if c["sex"] == "Male":
                     print(c["name"])
         elif sub_filter.lowercase() == 'h':
-            pass
+            print(help_text)
         else:
             print("Invalid input. Returning to main menu...") # Display user input error message
     elif main_filter == "2":
@@ -147,14 +183,14 @@ OTHER CREATURES""")
                     kind = ", ".join(c["kind"]) if isinstance(c["kind"], list) else c["kind"]
                     print(f"{c['name']}: {kind}")
         elif sub_filter.lowercase() == 'h':
-            pass
+            print(help_text)
         else:
             print("Invalid input. Enter a number between 1-5 (1/2/3/4/5). Returning to main menu...") # Display user input error message
         
         # Record user interaction in log_df
         record_actions(log_df, "remove character", sub_filter)
     elif main_filter.lowercase() == 'h':
-        pass
+        print(help_text)
     else:
         print("Invalid input. Enter a number between 1-2 (1/2). Returning to main menu...") # Display user input error message
     
@@ -215,7 +251,7 @@ Enter action (1/2/3): """).strip()
  ____________________________""")
             exit = True # Break while loop and return to main menu loop
         elif user_input.lowercase() == 'h':
-            pass
+            print(help_text)
         else:
             print("Invalid input. Enter a number between 1-3 (1/2/3). Returning to Favourites List...") # Display user input error message
         time.sleep(2)
@@ -243,7 +279,7 @@ What character would you like to add? (enter full name): """).title().strip()
 | {name.title()} added to Favourites List.                       
  _____________________________________________________________________""")
     elif name.lowercase() == 'h':
-        pass
+        print(help_text)
     else:
         print("Character not found! Returning to Favourites List...") # Display user input error message
     return
@@ -265,7 +301,7 @@ What character would you like to remove? (enter full name): """).title().strip()
 | {name.title()} successfully removed!                                  
  _____________________________________________________________________""")
     elif name.lowercase() == 'h':
-        pass
+        print(help_text)
     else:
         print("Character not found! Returning to Favourites List...")  # Display user input error message
     return
@@ -290,4 +326,6 @@ def display_image(url):
     # Display the image in the terminal
     image.draw()
     return
+
+
 

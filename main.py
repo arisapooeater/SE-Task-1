@@ -11,7 +11,7 @@ def main():
 |------------------------------------|
 | 1.Search for character             | 
 | 2.Filter all characters            |
-| 3.View favourites list             |
+| 3.View Favourites List             |
 | 4.View user interactions log       |
 | 5.Exit                             |
 |                                    |
@@ -38,7 +38,7 @@ Enter full name of character to search: """).strip()
                     else: 
                         display_image(character["Image"]) # Call display_image() function to visualise image in terminal
             elif character.lowercase() == 'h':
-                pass
+                print(help_text)
         elif user_input == '2':
             filter_characters(log_df) # Call filter_characters() function
         elif user_input == '3':
@@ -59,7 +59,7 @@ User interactions log is empty. Returning to main menu...""")
  ________________________________""")
             break
         elif user_input.lowercase() == 'h':
-            pass
+            print(help_text)
         else:
             print("""
 Invalid input. Enter a number between 1-4 (1/2/3/4). Please try again""") # Display user input error message
