@@ -352,14 +352,15 @@ END record_actions(action, details)
 ### Data Dictionary
 | Variable | Data Type | Format for Display | Size in Bytes | Size for Display | Description | Example | Validation |
 |-|-|-|-|-|-|-|-|
-|user_input | string | text | 50 | <50 characters | a | ```1``` | Must match one of the main menu options |
+|user_input | string | text | 50 | <50 characters | a | ```1``` | Must match expected options for the current menu OR 'h' for help |
 |Name | string | text | 50 | <50 characters | Stores primary name of a character. | ```Twilight Sparkle``` | Cannot be empty | 
-|Gender | string | text | 10 | <10 characters | Stores gender of a character. | ```Female``` | Must be accurate to APi values (Male/Female) |
-|Kind | string/list | text | 50 | <50 characters | Stores species or type of a character. | ```["Unicorn", "Alicorn"]``` | Must be accurate to API values |
-|Residence | string | multiline text | 200 | <200 characters | Stores where a character lives. | ```Canterlot``` | Must be accurate to API values and may contain newline characters |
-|Occupation | string | multiline text | 300 | <300 characters | Stores the character's job or role. | ```Princess of Friendship``` | Optional if API field is missing |
-|Image | string(URL) | image | 255 | Image Displayed | Stores URL of an image of the character | ```https://vignette.wikia.nocookie.net/mlp/images/b/bc/Princess_Twilight_Sparkle_ID_S4E26.png/revision/latest?cb=20160207045127``` | Must be a valid image URL from API |
+|Gender | string | text | 10 | <10 characters | Stores gender of a character. | ```Female``` | Must be retrieved directly from API + expected values "Male" or "Female" |
+|Kind | string | text | 50 | <50 characters | Stores species or type of a character. | ```Unicorn``` | Must be accurate to API values |
+|Residence | string | text | 200 | <200 characters | Stores where a character lives. | ```Canterlot``` | Must be accurate to API values and may contain newline characters |
+|Occupation | string | text | 300 | <300 characters | Stores the character's job or role. | ```Princess of Friendship``` | Optional if API field is missing |
+|Image | string(URL) | image | 255 | Image Displayed | Stores URL of an image of the character | ```https://vignette.wikia.nocookie.net/mlp/images/b/bc/Princess_Twilight_Sparkle_ID_S4E26.png/revision/latest?cb=20160207045127``` | Must be a valid image URL from API or None if no image available |
 |favlist | dictionary | structured data | variable | variable | Stores user's favourite characters and their data. | ```{ "Twilight Sparkle": {...} }``` | No duplicate character data |
+| log_df | DataFrame | table | dynamic | displayed table | Stores user interaction logs | ![log_df Example](./images/log_df.png) | No null timestamp |
 
 ---
 ### Gantt Chart
