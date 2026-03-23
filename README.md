@@ -10,29 +10,38 @@ To run this program, you need the following dependencies:
 - 'term-image' for image visualisation
 
 ## Install Dependencies
-1. Before going into VSC to install dependencies, if you have a Python version above 3.13, you will need to go to the following website to install Python 3.12.0:
+1. Before installing dependencies, open Visual Studio Code and click on any .py file and look at the bottom right corner as seen on the screenshot below. If you do not have Python version 3.12 (otherwise, skip to step 4), you will need to go to the following website to install Python 3.12.0:
 https://www.python.org/downloads/release/python-3120/?utm_source=copilot.com
 
-2. Scroll down the website and go to the subheading 'Files' and download the file compatible for your device.
+![Check Python Version](./images/pythonversion.png)
+
+2. Scroll down the website and go to the subheading 'Files' and download the installer file compatible for your device.
+
+![Scroll to Files Subheading](./images/files.png)
 
 3. Open the file you have downloaded and click for this version of Python to begin downloading.
 
-1. Once you have a compatible Python version, open Visual Studio Code and go to the top left of your VSC and click 'Terminal'
+4. Once you have downloaded a compatible Python version, open Visual Studio Code and go to the top left of your VSC and click 'Terminal'
+
 !["Click Terminal"](./images/terminal.png)
 
-2. After clicking terminal, you should see an option at the very top called 'New Terminal'. Click it and a new terminal should pop up at the bottom of your screen.
+5. After clicking terminal, you should see an option at the very top called 'New Terminal'. Click it and a new terminal should pop up at the bottom of your screen.
+
 !["Click New Terminal"](./images/newterminal.png)
 
-3. Paste the following text into your terminal and it will download all the libraries needed for functioning this API project.
+6. Paste the following text into your terminal and it will download all the libraries needed for functioning this API project.
 
 ```py -3.12 -m pip install -r requirements.txt```
+
 !["Paste"](./images/paste.png)
 
 ## How to Navigate
-The MLP Character Guide can be accessed through running the file named 'main.py' after all dependencies have been confirmed and installed. This can be done by the following command in terminal:
+The MLP Character Guide can be accessed through running the file named 'main.py' under a correct Python version after all dependencies have been confirmed and installed. This can be done by the following command in a new terminal:
+
 ```py -3.12 main.py```
 
 After clicking the button, a new terminal should pop up on your screen, which you can make full screen, with the following menu of actions the user can take. You can select the action of your choosing by typing its correlating number (1/2/3/4/5).
+
 ![Main Menu Screenshot](./images/menu.png)
 
 For any actions where the system wants you to enter a character name(lowercase or uppercase does not matter in this case), remember to enter their full name (eg. type Princess Celestia, not Celestia) and check your spelling is correct before pressing enter. Otherwise, the system will respond with an error message stating something like the following screenshot:
