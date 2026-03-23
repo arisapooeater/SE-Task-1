@@ -416,6 +416,23 @@ Everything mentioned in the functional and nonfunctional requirements was displa
 ### Student Feedback #2 - Isabella Usacheva
 - feedback based on functional and nonfunctional requirements, response time, load testing and the suitability of the requirements.txt and README.md file
 
+## Final Evaluation
+### Evaluate the current functionality of the program in terms of how well it addresses the functional and non-functional requirements
+Functionally, the project meets the requirements for providing users with a clear list of action options and a text field for user input. Additionally, the system is able to successfully fetching data from the API and displaying My Little Pony character details including the name, gender, ressidence, occupation and profile image. User interaction features outlined in the functional requirements such as searching by name, type or gender and creating a favourites list are implemented and fully functional.
+
+From a non-functional perspective, the performance of the program is adequate, although the response time varies between 2-4 seconds and is not as fast as planned due to large requests. It is also very reliable, with the API providing accurate My Little Pony data and the system accurately retrieving and displaying it to users. In terms of error processing, the system correctly identifies invalid user inputs and API issues, returning specific error messages without crashing, which was made evident during peer testing. However, some actions such as the search_name function do not allow users to retry and returns them to the main menu, which negatively impacts the user experience. Furthermore, the code is well structured and with several functions, allowing for easier maintenance and modification. Likewise, the user experience is also well structured and has clear boxes and spacing with concise and informational options, which all contribute to easier navigation and interaction. Although the orderly and distinct format of the application together with the comprehensive instructions in the README file do help promote accessibility, the program is overall not highly accessible in my opinion as in my non-functional requirements I stated 'accessible to a range of abilities'. This application is not friendly to people with disabilities nor does it really cater to general impairements like poor vision as the text during this experience is quite small and compact, which was pointed out by user feedback. Finally, the security of this program is quite minimal as no sensitive data or API key is required for the program to function, though considerations such as safe data handling are not properly considered.
+
+Overall, the program generally aligns with the requirements for this project with key gaps identified in security and accessibility, which should be addressed in future to improve overall system success and quality.
+
+### Discuss areas for improvement or new features that could be added
+Through peer feedback, I have gained valuable insight on the usability of this application and how the user experience can overall be improved. Users find that the clear screen function was actually counterintuitive to my actual intention (to enhance usability) and made it more difficult for users to utilise the application to its fullest extent as my peers stated they wished they could keep previous inputs and outputs in the terminal so they wouldn't have to re-enter them to check while they were researching about specific characters. Similarly, I believed the reprinting of the Favourites List after each 'add' or 'remove' action could help keep users updated on changes to the list and also simulate as a kind of basic version of for example, a spotify playlist. However, users found the constant refreshing of the Favourites List to be persistent and not needed, so in future I would alter it so it loops the Favourites List menu with viewing the list as an option. Overall, a deeper consideration of user needs could have taken place over accomodating to my own beliefs on what would make a better, more 'efficient' system, and features such as the clear screen and reprinting the favourites list should be removed or made optional to users for a more successful project. 
+
+On the other hand, if I were to speculate into any future updates and features that could enhance this user interface, I would like to explore more high-quality, interactive visualisation methods as term-image produces a quite pixelated and low quality visualsation. Additionally, to ensure an optimised maintenance for this project, I would implemement automated dependency updates and incorporate load testing to promote better concurrent usage so multiple users could interact with the application at once.
+
+
+### Evaluate how the project was managed throughout its development and maintenance, including your time management and how challenges were addressed during the software development lifecycle
+I believe my project was overall managed efficiently and responsibly throughout its development and maintenance. In terms of my requirements, I outlined them clearly and measurably, which made later stages such as development much easier to verify if it was going in the right direction. My time management was fairly good, where I made consistent commits from when the task was assigned toward the due date and there was not an excessive amount of last minute committing. Each task for the project was completed more or so within the time frames I created on the Gantt Chart, so my milestones were realistic to my working pace, although there was a need for editing later on to ensure consistency throughout both my code and my theory. Additionally, I completed two major code reviews during this project for a functioning program and a program where the API and module were integrated, and left self-comments during development on what changes needed to be made and if a function was working or not, which contributed to my efficiency and understanding of what needed to be done next. A challenge that occured during the software development lifecycle was Pillow term-image not being compatible with newer versions of Python, which I didn't identify until I tried testing on a different device from my own computer. To resolve this, I researched ways you can download older versions of Python and use it for an application and found the official website and incorporated a guide in the README.md file for people who have Python downloaded with an incompatible application to the term-image module. From this, I have ultimately learnt to do deeper research before developing code and incorporating earlier, consistent and variable testing through different devices and people throughout the project to ensure I don't run into any major issues or mistakes AFTER I've developed my application.
+
 ## Maintenance
 ### Explain how you would handle issues caused by changes to the API over time
 Monitor the API provider's changelog, status page, and announcement channels (email, RSS, Slack, Twitter).
@@ -435,6 +452,9 @@ Log and alert on anomalous responses (schema changes, unexpected status codes, r
 If the API deprecates functionality, plan migrations and maintain backward compatibility for a transition period; communicate with stakeholders and coordinate updates.
 
 ### Explain how you would ensure the program remains compatible with new versions of Python and libraries like requests and matplotlib
+Instead of constantly updating my program to remain compatible with newer versions with Python and libraries, I can ensure my program's functionality by specifying locking the Python and library versions employed for this appplication in the requirements.txt and the user instructions in the README file. For example, instead of leaving the requests library as it is in the requirements text file, I would change it to requests == 2.31.0, allowing for strict dependency management to avoid any system crashing and errors due to new updates. Likewise, my README already currently outlines that to run this program, they must run it under Python version 3.12, which helps avoid the hassle of constantly verifying if my application works under new updates. 
+
+However, although this stops the system from having sudden compatibility issues, it is pivotal I allocate time for upgrading the UI to adopt newer versions to ensure it remains useful to users. 
 
 Pin dependencies with a suitable policy (use minimal necessary pins in requirements/dev requirements; prefer semantic ranges) and maintain an automated dependency update process (dependabot, Renovate).
 
@@ -453,6 +473,8 @@ Maintain a test environment to validate major upgrades before production deploym
 Update documentation and minimum supported Python version in metadata (setup.py/pyproject.toml) as you adopt newer Python releases.
 
 ### Describe the steps you would take to fix a bug found in the program after deployment
+
+To fix a bug found in the program after deployment, I would take structured and cautionary approach to resolve the issue safely without creating new ones. Firstly, I would address 
 
 Reproduce: Gather logs, error messages, stack traces, and steps to reproduce. If possible, reproduce the issue locally or in a staging environment.
 
@@ -490,32 +512,3 @@ Use dependency management and automation (dependabot/renovate) to keep libraries
 
 Encourage contributing guidelines and document how to add tests and run the project locally to lower the barrier for future contributors.
 
-## Final Evaluation
-### Evaluate the current functionality of the program in terms of how well it addresses the functional and non-functional requirements
-Functional: Assess whether the program correctly implements required features (fetching/parsing weather data, producing visualizations, etc.). Verify with unit/integration tests and sample runs.
-
-Non-functional: Evaluate reliability (error handling, retries), performance (latency, memory), maintainability (modular code, clear tests), and usability (clear CLI/UX and docs).
-
-Summarize gaps uncovered by tests, logs, or user feedback and rate whether requirements are met, partially met, or not met.
-
-### Discuss areas for improvement or new features that could be added
-Improve resilience (better retry/backoff, caching, rate-limit handling).
-
-Enhance observability (metrics, structured logging, alerts).
-
-Add features: historical data storage, multi-source aggregation, user-configurable plots, and export formats.
-
-Improve UX: interactive visualizations, configuration via UI or environment variables, or packaging as a web service.
-
-Automate dependency updates and increase test coverage for edge cases.
-
-### Evaluate how the project was managed throughout its development and maintenance, including your time management and how challenges were addressed during the software development lifecycle
-Reflect on planning: Were requirements clear, and were milestones realistic?
-
-Review process: Were code reviews, CI, and testing enforced consistently?
-
-Time management: Note if sprints/estimates were accurate and where bottlenecks occurred.
-
-Challenges: Document blockers (API changes, environment issues) and how they were mitigated (workarounds, communication).
-
-Lessons learned: Extract improvements for future projects: clearer spec, earlier testing, better monitoring, and incremental releases.
