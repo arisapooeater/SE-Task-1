@@ -187,12 +187,12 @@ OTHER CREATURES""")
         else:
             print("Invalid input. Enter a number between 1-5 (1/2/3/4/5). Returning to main menu...") # Display user input error message
         
-        # Record user interaction in log_df
-        record_actions(log_df, "remove character", sub_filter)
     elif main_filter.lower() == 'h':
         print(help_text)
     else:
         print("Invalid input. Enter a number between 1-2 (1/2). Returning to main menu...") # Display user input error message
+    # Record user interaction in log_df
+    record_actions(log_df, "remove character", sub_filter)
     
 def view_list(log_df): 
     """Display all collected MLP characters in Favourites List and ask users if they want to add or remove characters."""
