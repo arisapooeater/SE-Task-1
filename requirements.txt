@@ -1,5 +1,7 @@
 requests
 pandas
-term-image == 0.7.0
+term-image
+Pillow
+
 
 

@@ -4,12 +4,20 @@
 This user interface is based on the animated series 'My Little Pony: Friendship is Magic' and its soul purpose is to allow people within the fandom and those wanting to get to know the series to familiarise themselves with characters from MLP. It acts as an interactive encyclopedia of all featured characters, where users can readily access MLP information without the need of constant web surfing.
 ## Requirements
 To run this program, you need the following dependencies:
+- A Python version below 3.13 (If you have a newer version then this, see Install Dependencies)
 - 'requests' to make HTTP requests to the My Little Pony API.
 - 'pandas' for data cleaning/filtering.
 - 'term-image' for image visualisation
 
 ## Install Dependencies
-1. Go to the top left of your VSC and click 'Terminal'
+1. Before going into VSC to install dependencies, if you have a Python version above 3.13, you will need to go to the following website to install Python 3.12.0:
+https://www.python.org/downloads/release/python-3120/?utm_source=copilot.com
+
+2. Scroll down the website and go to the subheading 'Files' and download the file compatible for your device.
+
+3. Open the file you have downloaded and click for this version of Python to begin downloading.
+
+1. Once you have a compatible Python version, open Visual Studio Code and go to the top left of your VSC and click 'Terminal'
 !["Click Terminal"](./images/terminal.png)
 
 2. After clicking terminal, you should see an option at the very top called 'New Terminal'. Click it and a new terminal should pop up at the bottom of your screen.
@@ -17,13 +25,12 @@ To run this program, you need the following dependencies:
 
 3. Paste the following text into your terminal and it will download all the libraries needed for functioning this API project.
 
-```pip install -r requirements.txt```
+```py -3.12 -m pip install -r requirements.txt```
 !["Paste"](./images/paste.png)
 
 ## How to Navigate
-The MLP Character Guide can be accessed through running the file named 'main.py' after all dependencies have been confirmed and installed. This can be done by clicking the play symbol in the top right hand corner of your VSC.
-
-![Run File Screenshot](./images/runfile.png)
+The MLP Character Guide can be accessed through running the file named 'main.py' after all dependencies have been confirmed and installed. This can be done by the following command in terminal:
+```py -3.12 main.py```
 
 After clicking the button, a new terminal should pop up on your screen, which you can make full screen, with the following menu of actions the user can take. You can select the action of your choosing by typing its correlating number (1/2/3/4/5).
 ![Main Menu Screenshot](./images/menu.png)

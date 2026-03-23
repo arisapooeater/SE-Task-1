@@ -411,7 +411,7 @@ Finally, as the record_actions() function has been created to preserve user inte
 
 ## Testing and Debugging
 ### Student Feedback #1 - Yuna Shin
-- feedback based on functional and nonfunctional requirements, response time, load testing and the suitability of the requirements.txt and README.md file
+Everything mentioned in the functional and nonfunctional requirements was displayed into the program. The README.md clearly portrayed everything needed to understand how to use the program and the requirements.txt file had all the modules included. The information outputed was easy to skim through and had everything a my little pony fan would want to look for. The various filters were easy to understand and navigate through and it was very simple to view, add and remove from my list. However, it would have been nice if my list wasn't posted everytime I wanted to add or remove from it and if the past inputs were to stay in the terminal so that I wouldn't have to re-enter my previous inputs or check the interaction log continuously - which was a really nice addition. Since I only have one body, it would be hard to determine the functionality of the load testing. Overall, the outputs were really clean and pretty and made it easier and more pleasing to read. 
 
 ### Student Feedback #2 - Isabella Usacheva
 - feedback based on functional and nonfunctional requirements, response time, load testing and the suitability of the requirements.txt and README.md file
