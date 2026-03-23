@@ -452,15 +452,12 @@ Log and alert on anomalous responses (schema changes, unexpected status codes, r
 If the API deprecates functionality, plan migrations and maintain backward compatibility for a transition period; communicate with stakeholders and coordinate updates.
 
 ### Explain how you would ensure the program remains compatible with new versions of Python and libraries like requests and matplotlib
-Instead of constantly updating my program to remain compatible with newer versions with Python and libraries, I can ensure my program's functionality by specifying locking the Python and library versions employed for this appplication in the requirements.txt and the user instructions in the README file. For example, instead of leaving the requests library as it is in the requirements text file, I would change it to requests == 2.31.0, allowing for strict dependency management to avoid any system crashing and errors due to new updates. Likewise, my README already currently outlines that to run this program, they must run it under Python version 3.12, which helps avoid the hassle of constantly verifying if my application works under new updates. 
+Instead of constantly updating my program to remain compatible with newer versions with Python and libraries, I can ensure my program's functionality by locking the Python and library versions employed for this application in the requirements.txt and the user instructions in the README file. For example, instead of leaving the requests library as it is in the requirements text file, I would change it to requests == 2.31.0, allowing for strict dependency management to avoid any system crashing and errors due to new updates. Likewise, my README already currently outlines that to run this program, they must run it under Python version 3.12, which helps avoid the hassle of constantly verifying if my application works under new updates. 
 
-However, although this stops the system from having sudden compatibility issues, it is pivotal I allocate time for upgrading the UI to adopt newer versions to ensure it remains useful to users. 
+However, although this approach minimises sudden compatibility issues, it is still pivotal to allocate time for maintaining and upgrading the UI to adopt newer versions of Python and modules to ensure long-term usability. This includes adopting continuous integration (CI) practices, allowing me to run tests across multiple Python and key dependency versions (eg. 3.10, 3.11, 3.12), identify any depreciation warnings and correct any code bugs proactively. Additionally, comprehensive unit and integration tests, particularly for important features like the API requests and data displaying should occur constantly to ensure any updates made do not break functionality. 
 
-Pin dependencies with a suitable policy (use minimal necessary pins in requirements/dev requirements; prefer semantic ranges) and maintain an automated dependency update process (dependabot, Renovate).
 
-Add continuous integration (CI) matrix builds to run tests across supported Python versions (e.g., 3.10, 3.11, 3.12) and key dependency versions.
 
-Write comprehensive unit and integration tests covering core functionality and critical library interactions (HTTP calls, plotting output).
 
 Use library abstraction layers where appropriate (for example, a small wrapper around requests to centralize HTTP behavior) to minimize update surface.
 
@@ -474,27 +471,17 @@ Update documentation and minimum supported Python version in metadata (setup.py/
 
 ### Describe the steps you would take to fix a bug found in the program after deployment
 
-To fix a bug found in the program after deployment, I would take structured and cautionary approach to resolve the issue safely without creating new ones. Firstly, I would address 
+To fix a bug found in the program after deployment, I would take structured and cautionary approach to resolve the issue safely without creating new ones. Firstly, I would identify the severity of the bug to determine its urgency and whether it can be fixed immediately or if I need to wait until more resources are available. I would also notify the development team (if this were a real-life project) and reproduce a test environment for developers, as well as checking if user or data integrity is made vulnerable so any stakeholders can be notified as well. 
 
-Reproduce: Gather logs, error messages, stack traces, and steps to reproduce. If possible, reproduce the issue locally or in a staging environment.
+Next, I would document all relevant details both manually through screenshots and videos or through a bug reporting tool, including factors like the steps taken to reproduce the bug, the environment details, the expected vs actual results, and an identification of why any automated tests did not catch the bug. This overall helps pinpoint the root cause of the bug so that it can be fixed appropriately. Additionally, I would then isolate the bug by isolating variables in the codebase, analysing and logs and tools like git bisect to capture the failing behaviour. The use of targeted testing overall speeds up feedback loops, increasing efficiency and minimising extra costs. 
 
-Triage: Assess severity and impact, prioritize the bug (P0, P1, etc.), and inform stakeholders if it affects users or data integrity.
-
-Isolate: Narrow down the cause using logs, debugging, and targeted tests. Add or update unit/integration tests that capture the failing behavior.
-
-Fix: Implement a minimal, well-tested fix. Prefer fixes that are easy to review and revert if necessary.
-
-Review: Submit a change with a clear description and include tests. Use code review and automated CI checks.
-
-Deploy: Roll out the fix to staging first, verify behavior, then deploy to production. Use a canary or phased release if appropriate.
-
-Monitor: Observe logs and metrics for regression or related issues post-deployment.
-
-Postmortem: Document the root cause, corrective actions, and preventive measures (tests, monitoring, documentation updates). Update issue tracking and communicate resolution to stakeholders.
+Then, I would implement a minimal, quick fix that has been both manually and automatically tested thoroughly to ensure any new features created do not create new bugs, and this would be deployed and monitored for any regression or related issues post deployment. Finally, a post-mortem analysis on the root cause, the corrective actions and preventive measures taken (including any updated automated tests) will be made to prevent the same error from occuring again and providing valuable insight for fixing any similar future bugs.
 
 ### Outline how you would maintain clear documentation and ensure the program remains easy to update in the future
 
-Keep documentation close to code (README, docstrings, and a docs/ directory) and version it with the repository.
+Clear documentation is crucial for an organised, streamlined workflow and provides as a permanent record and reference point for any requirements, goals, errors and updates in a project. This can be done by creating documentation files close to the code in the repository through a Markdown file to optimise easy referencing and version control alongside the code during the development stage. 
+
+
 
 Document architecture, API contracts, deployment steps, environment variables, and common troubleshooting scenarios.
 
