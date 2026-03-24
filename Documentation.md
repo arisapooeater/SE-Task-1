@@ -59,11 +59,9 @@ The main menu should be both logical and appealing to users, where options are c
 
 After the system completes a user action, it should ask the user if they are done to clear the screen and reload the main menu for further actions and prevent a cluttered and confusing interface.
 
-Furthermore, overall tone of system messages and menu should be very friendly and catering to the user and must maintain a warm character while giving clear and readable responses to boost overall user satisfaction. 
+Furthermore, overall tone of system messages and menu should be very friendly while giving clear and readable responses to boost overall user satisfaction. 
 
 **Reliability**
-
-What could perhaps not crash the whole system, but could be an issue and needs to be addressed? Data integrity? Duplicate data? API retrieval crash?
 
 The system should be able to operate reliably when retrieving and displaying character data from the My Little Pony API. Potential issues such as failed API requests, duplicate data, or incomplete responses should be handled gracefully without causing the application to crash. Additionally, the program must maintain data integrity by ensuring that information retrieved from the API is processed and displayed accurately.
 
@@ -99,7 +97,7 @@ If the API cannot be reached or fails to return valid data, the system should di
 - User will return to main menu and can continue interacting with the project
 
 ---
-### Use Case #2: Filter MLP characters by attributes (sex/type)
+### Use Case #2: Filter MLP characters by attributes (sex/kind)
 **Actors:** User
 
 **Preconditions:** 
@@ -111,7 +109,7 @@ If the API cannot be reached or fails to return valid data, the system should di
 **Main Flow:** 
 
 1. User selects 'filter characters' from the main menu via a string input in the command line.
-2. The system displays to user main filter options (sex, type) and prompts user input
+2. The system displays to user main filter options (sex, kind) and prompts user input
 3. User selects a main filter.
 4. System displays to user sub filter options within selected main filter and prompts user input
 5. User selects a sub filter.
@@ -194,8 +192,8 @@ If the API cannot be reached or fails to return valid data, the system should di
 
 ## Design
 ### Structure Chart
-![Structure Chart](./images/structurechart.png)
-REDO AGAIN RIP
+![Structure Chart](./images/structurechart.jpeg)
+
 ---
 ### Flowchart & Pseudocode
 #### main()
