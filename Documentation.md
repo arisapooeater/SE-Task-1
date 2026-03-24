@@ -16,6 +16,7 @@ To enable users to search for and sort characters in the animated series 'My Lit
 - **Reliability:** The API chosen for this project should contain accurate, reliable data on the My Little Pony Universe. Additionally, the system should be able to relay this data without faults. 
 - **Security:** API key should be hidden to prevent data theft and unauthorised access. Should practise data minimisation.
 - **Accessibility:** System should be easily navigated and usable for a range of abilities. README file should be able to explain how to use the system clearly and concisely.
+- **Maintainability:** Code should be well-structured with consistent naming conventions and formatting to ensure any errors or updates in features cause minimal changes to the overall codebase. Core features should be made into a function and inline documentation (eg. docstrings, comments) should explain these functions and modules.
 
 ## Determining Specification
 ### Functional Specifications
@@ -53,9 +54,9 @@ All system actions (eg. loading main menu, printing search results etc.) should 
 
 **Usability / Accessibility**
 
-The application should overall be structured and easy to navigate. System messages and menu should be enclosed in boxed sections for visual structure, whereas user input fields should have a line above and below to emphasise where input is required. This makes the system more easily accessible to users. 
+The application should overall be structured and easy to navigate. System messages and menu should be enclosed in boxed sections for visual structure, whereas user input fields should clearly state to users what inputs are expected. This makes the system more easily accessible to users. 
 
-The main menu should be both logical and appealing to users, where options are clearly visible to promote accessibility. Users should be able to select their option easily with an understanding of what the option does and what results to expect.
+The main menu should be both logical and appealing to users, where options are clearly visible and either numbered or labelled to promote accessibility. Users should be able to select their option easily with an understanding of what the option does and what results to expect.
 
 After the system completes a user action, it should ask the user if they are done to clear the screen and reload the main menu for further actions and prevent a cluttered and confusing interface.
 
