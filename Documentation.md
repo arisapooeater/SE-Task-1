@@ -202,7 +202,7 @@ BEGIN main()
     CREATE log_df as a dictionary
     CREATE favlist as a dictionary
     WHILE True
-        DISPLAY "[MLP Character Guide!] 1.Search character 2.Sort characters 3.View favourites list 4.View user interactions log 5.Exit"
+        DISPLAY "[MLP Character Guide!] 1.Search character 2.Sort characters 3.View favourites list 4.View user interactions log 5.Exit (Enter h for help)"
         INPUT choice
         IF choice is 1 THEN
             DISPLAY 'What character would you like to search?: '
@@ -217,6 +217,8 @@ BEGIN main()
         ELIF choice is 5 THEN
             DISPLAY 'Exiting program...'
             break
+        ELIF choice is 'h' THEN
+            DISPLAY 'Insert helpful instruction text'
         ELSE
             DISPLAY 'Invalid input. Reloading Main Menu...'
         ENDIF
