@@ -436,39 +436,16 @@ I believe my project was overall managed efficiently and responsibly throughout 
 
 ## Maintenance
 ### Explain how you would handle issues caused by changes to the API over time
-Monitor the API provider's changelog, status page, and announcement channels (email, RSS, Slack, Twitter).
+Overall, I would handle issues causes by API changes over time by make sure that any breaking changes or deprecations are detected early and managed efficiently. This includes monitoring the My Little Pony API's official website, changelog and announcement channels to stay informed on any future updates. Additionally, I would implement automated unit and contract testing to validate API responses, such as checking expected data structures and any HTTPS status code changes.
 
-Implement versioned API client logic so you can support multiple API versions and migrate incrementally.
-
-Add automated tests that mock the API responses (unit tests and contract tests) to detect breaking changes early.
-
-Wrap external API calls in a thin adapter layer that centralizes parsing, error handling, and retries. When the API changes, update the adapter rather than scattering fixes through the codebase.
-
-Use feature flags or configuration to switch between old and new endpoints/behaviors during migration.
-
-Validate input and handle unexpected or missing fields gracefully (defensive parsing with sensible defaults and clear error messages).
-
-Log and alert on anomalous responses (schema changes, unexpected status codes, rate-limit responses) so issues are visible in production.
-
-If the API deprecates functionality, plan migrations and maintain backward compatibility for a transition period; communicate with stakeholders and coordinate updates.
+To minimise the impact of these changes, I would wrap API calls in dedicated functions (abstraction layers) so changes can be handled in one place without affecting the rest of the program. Furthermore, ensuring proper error handling that can validate input and handle any unexpected or missing fields gracefully without crashing will help ensuring the program remains functional to users when these changes to the API occur. When these updates are made to the application, it should also be reflected in documentation such as the changelog or README file to notify users on any new requirements or fixes.
 
 ### Explain how you would ensure the program remains compatible with new versions of Python and libraries like requests and matplotlib
-Instead of constantly updating my program to remain compatible with newer versions with Python and libraries, I can ensure my program's functionality by locking the Python and library versions employed for this application in the requirements.txt and the user instructions in the README file. For example, instead of leaving the requests library as it is in the requirements text file, I would change it to requests == 2.31.0, allowing for strict dependency management to avoid any system crashing and errors due to new updates. Likewise, my README already currently outlines that to run this program, they must run it under Python version 3.12, which helps avoid the hassle of constantly verifying if my application works under new updates. 
+Instead of constantly updating my program to remain compatible with newer versions with Python and libraries, I can ensure my program's functionality by version locking Python and libraries employed for this application in the requirements.txt and the user instructions in the README file. For example, instead of leaving the requests library as it is in the requirements text file, I would change it to requests == 2.31.0, allowing for strict dependency management to avoid any breaking changes from newer versions. Likewise, my README already currently outlines that to run this program, they must run it under Python version 3.12, which similarly reduces compatibility issues and avoids the need for constant validation. 
 
-However, although this approach minimises sudden compatibility issues, it is still pivotal to allocate time for maintaining and upgrading the UI to adopt newer versions of Python and modules to ensure long-term usability. This includes adopting continuous integration (CI) practices, allowing me to run tests across multiple Python and key dependency versions (eg. 3.10, 3.11, 3.12), identify any depreciation warnings and correct any code bugs proactively. Additionally, comprehensive unit and integration tests, particularly for important features like the API requests and data displaying should occur constantly to ensure any updates made do not break functionality. 
+However, although this approach minimises sudden compatibility risks, it is still pivotal to allocate time for maintaining and upgrading the UI to adopt newer versions to ensure long-term usability. This includes adopting continuous integration (CI) practices, allowing me to run tests across multiple Python and key dependency versions (eg. 3.10, 3.11, 3.12), identify any deprecation warnings and compatibility issues early. Additionally, comprehensive unit and integration tests, particularly for important features like the API requests and data displaying should occur constantly to ensure any updates made do not break existing functionality. 
 
-
-
-
-Use library abstraction layers where appropriate (for example, a small wrapper around requests to centralize HTTP behavior) to minimize update surface.
-
-Follow deprecation warnings in CI and local development; treat warnings as part of code quality checks and fix causes proactively.
-
-Keep an eye on release notes of major dependencies; plan and allocate time for upgrades when breaking changes are announced.
-
-Maintain a test environment to validate major upgrades before production deployment; use staging to catch runtime issues.
-
-Update documentation and minimum supported Python version in metadata (setup.py/pyproject.toml) as you adopt newer Python releases.
+Abstraction layers could further support mainatainability by separating core program logic from external libraries. For example, wrapping requests to the API in functions means that if the requests library changes, only that specific layer needs to be modified rather than the entire codebase. This makes the program more easily adapted to future updates while minimising the risk of widespread bugs and errors. When these updates are made to the application, it should also be reflected in documentation such as the README file to notify users on changes to supported Python versions and the necessary requirements to run the program. 
 
 ### Describe the steps you would take to fix a bug found in the program after deployment
 
@@ -480,23 +457,10 @@ Then, I would implement a minimal, quick fix that has been both manually and aut
 
 ### Outline how you would maintain clear documentation and ensure the program remains easy to update in the future
 
-Clear documentation is crucial for an organised, streamlined workflow and provides as a permanent record and reference point for any requirements, goals, errors and updates in a project. This can be done by creating documentation files close to the code in the repository through a Markdown file to optimise easy referencing and version control alongside the code during the development stage. 
+Clear documentation is crucial for an organised, streamlined workflow and provides as a permanent record and reference point for any requirements, goals, errors and updates in a project. I would document key aspects of the project, including the project requirements, scopes, success criteria, as well as aspects such as overall architecture, deployment steps, environmental variables and common troubleshooting scenarios to ensure developers can quickly understand the general project situation. These documentation files would be kept close to the code in the repository through a Markdown file to optimise easy referencing and version control alongside the code during the development stage. Furthermore, my documentation would also include a comprehensive README file that is up to date with any instructions on installations, dependencies, usage, as well as any set up steps for installing the compatible Python version. The README file overall guarantees that both users and other developers interacting with your application have a complete understanding of the program and how to run it.
+
+In terms of the code, it should be modular, consisting of multiple functions to reduce redundant codeblocks, and well-structured to ensure easy updating of features without affecting the whole codebase. Inline comments and docstrings will focus on outlining any clarifications or reasoning for specific design choices in any functions, parameters and other important logic for increased understanding and communication with other future developers. Finally, I would maintain an up-to-date changelog and release notes to track important updates and highlight any breaking changes, making it easier to manage future upgrades.
 
 
 
-Document architecture, API contracts, deployment steps, environment variables, and common troubleshooting scenarios.
-
-Maintain an up-to-date changelog and release notes for important updates and breaking changes.
-
-Invest in automated tests and CI that run on pull requests so changes are validated before merging.
-
-Use code style, linters, and static analysis to keep the codebase consistent and reduce cognitive load for contributors.
-
-Modularize code with clear separation of concerns (adapters for external APIs, services for business logic, CLI/UI for presentation).
-
-Add examples and sample data to make it easy to validate behavior after changes.
-
-Use dependency management and automation (dependabot/renovate) to keep libraries current and schedule regular upgrade windows.
-
-Encourage contributing guidelines and document how to add tests and run the project locally to lower the barrier for future contributors.
 
